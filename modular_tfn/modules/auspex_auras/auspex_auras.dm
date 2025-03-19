@@ -10,33 +10,40 @@
 	holder.icon_state = "aura"
 
 	if(client)
-		if(a_intent == INTENT_HARM)
-			holder.color = AURA_MORTAL_HOSTILE
-		else
-			holder.color = AURA_MORTAL
-	else if(isnpc(src))
+		switch(a_intent)
+			if(INTENT_HARM)
+				holder.color = AURA_MORTAL_HARM
+			if(INTENT_GRAB)
+				holder.color = AURA_MORTAL_GRAB
+			if(INTENT_DISARM)
+				holder.color = AURA_MORTAL_DISARM
+			else
+				holder.color = AURA_MORTAL_HELP
+	else if (isnpc(src))
 		var/mob/living/carbon/human/npc/N = src
 		if (N.danger_source)
-			holder.color = AURA_MORTAL_HOSTILE
+			holder.color = AURA_MORTAL_HARM
 		else
-			holder.color = AURA_MORTAL
+			holder.color = AURA_MORTAL_DISARM
 
-	if(iskindred(src))
+	if (iskindred(src) || HAS_TRAIT(src, TRAIT_COLD_AURA) || (iscathayan(src) && !H.check_kuei_jin_alive()))
 		//pale aura for vampires
-		holder.color = AURA_KINDRED
+		if(!HAS_TRAIT(src, TRAIT_WARM_AURA))
+			switch(a_intent)
+				if(INTENT_HARM)
+					holder.color = AURA_UNDEAD_HARM
+				if(INTENT_GRAB)
+					holder.color = AURA_UNDEAD_GRAB
+				if(INTENT_DISARM)
+					holder.color = AURA_UNDEAD_DISARM
+				else
+					holder.color = AURA_UNDEAD_HELP
 		//only Baali can get antifrenzy through selling their soul, so this gives them the unholy halo (MAKE THIS BETTER)
-		if(antifrenzy)
+		if (antifrenzy)
 			holder.icon = 'icons/effects/32x64.dmi'
 		//black aura for diablerists
-		if(diablerist)
+		if (diablerist)
 			holder.icon_state = "diablerie_aura"
-
-	if(iscathayan(src))
-		var/mob/living/carbon/human/H = src
-		if(!H.check_kuei_jin_alive())
-			holder.color = AURA_KINDRED
-		else
-			holder.color = AURA_MORTAL
 
 	if(isgarou(src) || iswerewolf(src))
 		//garou have bright auras due to their spiritual potence
@@ -44,8 +51,6 @@
 
 	if(isghoul(src))
 		//Pale spots in the aura, had to be done manually since holder.color will show only a type of color
-		holder.overlays = null
-		holder.color = null
 		holder.icon_state = AURA_GHOUL
 
 	if(mind?.holy_role >= HOLY_ROLE_PRIEST)

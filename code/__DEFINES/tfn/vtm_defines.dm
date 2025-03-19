@@ -49,9 +49,14 @@
  * Auspex aura defines
  */
 
-#define AURA_MORTAL "#0000ff"
-#define AURA_MORTAL_HOSTILE "#ff0000"
-#define AURA_KINDRED "#ffffff"
+#define AURA_MORTAL_DISARM "#2222ff"
+#define AURA_MORTAL_HELP "#22ff22"
+#define AURA_MORTAL_GRAB  "#ffff22"
+#define AURA_MORTAL_HARM "#ff2222"
+#define AURA_UNDEAD_DISARM "#BBBBff"
+#define AURA_UNDEAD_HELP "#BBffBB"
+#define AURA_UNDEAD_GRAB  "#ffffBB"
+#define AURA_UNDEAD_HARM "#ffBBBB"
 #define AURA_GAROU "aura_bright"
 #define AURA_GHOUL "aura_ghoul"
 #define AURA_TRUE_FAITH "#ffe12f"
@@ -61,3 +66,10 @@
  */
 
 #define isMasqueradeEnforced(A) (isarea(A) && A.zone_type == "masquerade")
+
+/**
+ * Whitelist defines
+ */
+
+#define TRUSTED_PLAYER "trusted_player"
+

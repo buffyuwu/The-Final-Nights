@@ -16,16 +16,14 @@
 	name = "Heightened Senses"
 	desc = "Enhances your senses far past human limitations."
 
-	check_flags = DISC_CHECK_CONSCIOUS
-
 	level = 1
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 0
 
 	toggled = TRUE
-	duration_length = 30 SECONDS
 
 /datum/discipline_power/auspex/heightened_senses/activate()
 	. = ..()
-	owner.add_client_colour(/datum/client_colour/glass_colour/lightblue)
 
 	ADD_TRAIT(owner, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
@@ -34,7 +32,6 @@
 
 /datum/discipline_power/auspex/heightened_senses/deactivate()
 	. = ..()
-	owner.remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 
 	REMOVE_TRAIT(owner, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
@@ -46,17 +43,14 @@
 	name = "Aura Perception"
 	desc = "Allows you to perceive the auras of those near you."
 
-	check_flags = DISC_CHECK_CONSCIOUS
-
 	level = 2
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 0
 
 	toggled = TRUE
-	duration_length = 30 SECONDS
 
 /datum/discipline_power/auspex/aura_perception/activate()
 	. = ..()
-	owner.add_client_colour(/datum/client_colour/glass_colour/lightblue)
-
 	var/datum/atom_hud/abductor_hud = GLOB.huds[DATA_HUD_ABDUCTOR]
 	abductor_hud.add_hud_to(owner)
 
@@ -64,8 +58,6 @@
 
 /datum/discipline_power/auspex/aura_perception/deactivate()
 	. = ..()
-	owner.remove_client_colour(/datum/client_colour/glass_colour/lightblue)
-
 	var/datum/atom_hud/abductor_hud = GLOB.huds[DATA_HUD_ABDUCTOR]
 	abductor_hud.remove_hud_from(owner)
 
@@ -76,16 +68,14 @@
 	name = "The Spirit's Touch"
 	desc = "Allows you to feel the physical wellbeing of those near you."
 
-	check_flags = DISC_CHECK_CONSCIOUS
-
 	level = 3
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 0
 
 	toggled = TRUE
-	duration_length = 30 SECONDS
 
 /datum/discipline_power/auspex/the_spirits_touch/activate()
 	. = ..()
-	owner.add_client_colour(/datum/client_colour/glass_colour/lightblue)
 
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	health_hud.add_hud_to(owner)
@@ -94,7 +84,6 @@
 
 /datum/discipline_power/auspex/the_spirits_touch/deactivate()
 	. = ..()
-	owner.remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	health_hud.remove_hud_from(owner)
@@ -106,12 +95,11 @@
 	name = "Telepathy"
 	desc = "Feel the psychic resonances left on objects you can touch."
 
-	check_flags = DISC_CHECK_CONSCIOUS
-
 	level = 4
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 0
 
 	toggled = TRUE
-	duration_length = 30 SECONDS
 
 /datum/discipline_power/auspex/telepathy/activate()
 	. = ..()
@@ -226,9 +214,9 @@
 	name = "Psychic Projection"
 	desc = "Leave your body behind and fly across the land."
 
-	check_flags = DISC_CHECK_CONSCIOUS
-
 	level = 5
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 1
 
 /datum/discipline_power/auspex/psychic_projection/activate()
 	. = ..()

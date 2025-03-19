@@ -144,6 +144,33 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel dumb anymore.</span>"
 	allowed_species = list("Vampire", "Human", "Ghoul", "Kuei-Jin")
 
+/datum/quirk/cold_aura
+	name = "Deathly Aura"
+	desc = "Even if your heart beats, you show cold to matters of the soul."
+	mob_trait = TRAIT_COLD_AURA
+	value = 3
+	gain_text = "<span class='warning'>You feel like you're standing in the shade.</span>"
+	lose_text = "<span class='notice'>You feel a subtle warmth.</span>"
+	allowed_species = list("Human", "Ghoul")
+
+/datum/quirk/warm_aura
+	name = "Lively Aura"
+	desc = "You don't SEEM dead enough to readings, fooling a few forms of detection as to whether or not you're a walking corpse."
+	mob_trait = TRAIT_WARM_AURA
+	value = 3
+	gain_text = "<span class='warning'>You feel your heart beat, for a moment.</span>"
+	lose_text = "<span class='notice'>You feel a subtle chill.</span>"
+	allowed_species = list("Kuei-jin", "Vampire")
+
+/datum/quirk/blush_of_health
+	name = "Blush of Health"
+	desc = "You're a little more lively than others. Makes you look less dead to onlookers."
+	mob_trait = TRAIT_BLUSH_OF_HEALTH
+	value = 3
+	gain_text = "<span class='warning'>You feel your heart beat, thumping irregularly in your chest.</span>"
+	lose_text = "<span class='notice'>You feel your pulse slow to a crawl, stilling.</span>"
+	allowed_species = list("Vampire")
+
 /datum/quirk/coffin_therapy
 	name = "Coffin Therapy"
 	desc = "Your wounds heal only in a coffin."
@@ -170,6 +197,49 @@ Dancer
 	gain_text = "<span class='warning'>You feel extra <b>HUNGRY</b>.</span>"
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
+
+/datum/quirk/debtor
+	name = "Debtor"
+	desc = "You have loans to pay off. Halve your starting money."
+	mob_trait = TRAIT_DEBTOR
+	value = -1
+	gain_text = "<span class='warning'>You feel poorer.</span>"
+	lose_text = "<span class='notice'>You feel hope for your future finances.</span>"
+
+/datum/quirk/messy_eater
+	name = "Messy Eater"
+	desc = "Blood doesn't make it in around your fangs correctly. Create bloodstains when you feed, and reduce your blood intake."
+	mob_trait = TRAIT_MESSY_EATER
+	value = -2
+	gain_text = "<span class='warning'>Your fangs feel awkward in your mouth.</span>"
+	lose_text = "<span class='notice'>You fangs feel comfortable in your mouth.</span>"
+	allowed_species = list("Vampire","Kuei-jin")
+
+/datum/quirk/animal_repulsion
+	name = "Animal Repulsion"
+	desc = "Ever heard of animal magnetism? You've got the opposite of that. Only literal. Animals hate you!"
+	mob_trait = TRAIT_ANIMAL_REPULSION
+	value = -2
+	gain_text = "<span class='warning'>You can feel hostile eyes watching you.</span>"
+	lose_text = "<span class='notice'>Cats walk by you unphased.</span>"
+	allowed_species = list("Vampire","Ghoul","Human","Kuei-jin")
+
+/datum/quirk/illegal_identity
+	name = "Illegal Identity"
+	desc = "Illegal immigrant? Died legally? Born a wolf? The cops aren't happy."
+	mob_trait = TRAIT_ILLEGAL_IDENTITY
+	value = 0
+	gain_text = "<span class='warning'>You feel legally unprepared.</span>"
+	lose_text = "<span class='notice'>You feel bureaucratically legitimate.</span>"
+
+/datum/quirk/potent_blood
+	name = "Potent Blood"
+	desc = "There's some spark of vital life in your veins. Vampires gain extra blood points for feeding off of you."
+	mob_trait = TRAIT_POTENT_BLOOD
+	value = -2
+	gain_text = "<span class='warning'>Vim runs through you.</span>"
+	lose_text = "<span class='notice'>You feel subtly enervated.</span>"
+	allowed_species = list("Ghoul","Human")
 
 /datum/action/fly_upper
 	name = "Fly Up"
@@ -463,7 +533,7 @@ Dancer
 /datum/quirk/consumption/on_process(delta_time)
 	if(prob(5))
 		quirk_holder.adjustBruteLoss(5, TRUE)
-
+/*
 /datum/quirk/hunted
 	name = "Sir You Are Being Hunted"
 	desc = "You are in the Blood Hunt list from the start and can't leave it. Good luck!"
@@ -475,20 +545,21 @@ Dancer
 	if(iswerewolf(quirk_holder) || isgarou(quirk_holder))
 		return
 	if(isturf(quirk_holder.loc))
-		SSbloodhunt.announce_hunted(quirk_holder, "Camarilla Wanted List")
+		SSbloodhunt.announce_hunted(quirk_holder, "Camarilla Wanted List") */
+
 /*
 /datum/quirk/diablerist
 	name = "Black Secret"
 	desc = "You have a small, ancient secret, somehow related to Diablerie, and this decreases your chance to survive another one. <b>This isn't a licence to diablerie anyone you want!</b>"
 	value = -3
 	allowed_species = list("Vampire")
-*/
+
 /datum/quirk/diablerist/on_spawn()
 	if(iswerewolf(quirk_holder) || isgarou(quirk_holder))
 		return
 	var/mob/living/carbon/human/H = quirk_holder
 	H.diablerist = TRUE
-
+*/
 /datum/quirk/badvision
 	name = "Nearsighted"
 	desc = "Your eye illness somehow did not become cured after the Embrace, and you need to wear perception glasses."

@@ -149,7 +149,7 @@
 /datum/action/mysticism
 	name = "Mysticism"
 	desc = "Abyss Mysticism rune drawing."
-	button_icon_state = "thaumaturgy"
+	button_icon_state = "mysticism"
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 	vampiric = TRUE
 	var/drawing = FALSE
