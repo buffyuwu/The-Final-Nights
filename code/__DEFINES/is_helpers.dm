@@ -244,5 +244,3 @@ GLOBAL_LIST_INIT(book_types, typecacheof(list(
 	/obj/item/book,
 	/obj/item/spellbook,
 	/obj/item/storage/book)))
-
-#define isMasqueradeEnforced(A) (isarea(A) && A.zone_type == "masquerade")

@@ -55,3 +55,9 @@
 #define AURA_GAROU "aura_bright"
 #define AURA_GHOUL "aura_ghoul"
 #define AURA_TRUE_FAITH "#ffe12f"
+
+/**
+ * Conditional defines
+ */
+
+#define isMasqueradeEnforced(A) (isarea(A) && A.zone_type == "masquerade")
