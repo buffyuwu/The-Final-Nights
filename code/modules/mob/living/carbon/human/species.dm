@@ -2302,7 +2302,6 @@ GLOBAL_LIST_EMPTY(selectable_races)
 		return pick('sound/mobs/humanoids/human/laugh/female_laugh_1.ogg',
 		'sound/mobs/humanoids/human/laugh/female_laugh_2.ogg',
 		'sound/mobs/humanoids/human/laugh/female_laugh_3.ogg',
-		'sound/mobs/humanoids/human/laugh/female_laugh_4.ogg',
 		'sound/mobs/humanoids/human/laugh/female_chuckle_1.ogg',
 		'sound/mobs/humanoids/human/laugh/female_chuckle_2.ogg',
 		'sound/mobs/humanoids/human/laugh/female_chuckle_3.ogg',
@@ -2311,6 +2310,17 @@ GLOBAL_LIST_EMPTY(selectable_races)
 		'sound/mobs/humanoids/human/laugh/male_laugh_1.ogg',
 		'sound/mobs/humanoids/human/laugh/male_laugh_2.ogg',
 		'sound/mobs/humanoids/human/laugh/male_chuckle_1.ogg',
+	)
+
+/datum/species/proc/get_crazylaugh_sound(mob/living/carbon/human/human)
+	if(human.body_type == FEMALE)
+		return pick('sound/mobs/humanoids/human/laugh/madness/female_crazylaugh_1.ogg',
+		)
+	return pick(
+		'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_1.ogg',
+		'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_2.ogg',
+		'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_3.ogg',
+		'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_4.ogg',
 	)
 
 /datum/species/proc/get_sigh_sound(mob/living/carbon/human/human)

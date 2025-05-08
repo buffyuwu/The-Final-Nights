@@ -266,6 +266,30 @@
 		return
 	return user.dna.species.get_laugh_sound(user)
 
+/datum/emote/living/crazylaugh
+	key = "crazylaugh"
+	key_third_person = "crazylaughs"
+	message = "laughs maniacally!"
+	message_mime = "laughs silently!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	vary = TRUE
+	message_alternates = list("lets out a maniacal laugh!",
+	"erupts into a fit of strange laughter!",
+	"laughs maniacally!",
+	"lets out an unhinged laugh!",
+	"bursts into a fit of uncontrollable laughter!")
+
+/datum/emote/living/crazylaugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/crazylaugh/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_crazylaugh_sound(user)
+
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"
