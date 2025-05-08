@@ -1012,9 +1012,21 @@ GLOBAL_LIST_INIT(malk_hallucinations, list(
 			target.playsound_local(source, 'code/modules/wod13/sounds/fuck.ogg', 50)
 		if("laughter")
 			if(prob(50))
-				target.playsound_local(source, 'sound/mobs/humanoids/human/laugh/womanlaugh.ogg', 50, 1)
+				target.playsound_local(source, pick(
+				'sound/mobs/humanoids/human/laugh/female_laugh_1.ogg',
+				'sound/mobs/humanoids/human/laugh/female_laugh_2.ogg',
+				'sound/mobs/humanoids/human/laugh/female_laugh_3.ogg',
+				'sound/mobs/humanoids/human/laugh/female_laugh_4.ogg',
+				'sound/mobs/humanoids/human/laugh/female_chuckle_1.ogg',
+				'sound/mobs/humanoids/human/laugh/female_chuckle_2.ogg',
+				'sound/mobs/humanoids/human/laugh/female_chuckle_3.ogg',
+				), 50, 1)
 			else
-				target.playsound_local(source, pick('sound/mobs/humanoids/human/laugh/manlaugh1.ogg', 'sound/mobs/humanoids/human/laugh/manlaugh2.ogg'), 50, 1)
+				target.playsound_local(source, pick(
+				'sound/mobs/humanoids/human/laugh/male_laugh_1.ogg',
+				'sound/mobs/humanoids/human/laugh/male_laugh_2.ogg',
+				'sound/mobs/humanoids/human/laugh/male_chuckle_1.ogg',
+				 ), 50, 1)
 		if("creepy")
 		//These sounds are (mostly) taken from Hidden: Source
 			target.playsound_local(source, pick(GLOB.creepy_ambience), 50, 1)
