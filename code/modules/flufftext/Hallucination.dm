@@ -1016,20 +1016,20 @@ GLOBAL_LIST_INIT(malk_hallucinations, list(
 				'sound/mobs/humanoids/human/laugh/female_laugh_1.ogg',
 				'sound/mobs/humanoids/human/laugh/female_laugh_2.ogg',
 				'sound/mobs/humanoids/human/laugh/female_laugh_3.ogg',
-				'sound/mobs/humanoids/human/laugh/female_chuckle_1.ogg',
-				'sound/mobs/humanoids/human/laugh/female_chuckle_2.ogg',
-				'sound/mobs/humanoids/human/laugh/female_chuckle_3.ogg',
-				'sound/mobs/humanoids/human/laugh/madness/female_crazylaugh_1.ogg',
+				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_1.ogg',
+				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_2.ogg',
+				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_3.ogg',
+				'sound/mobs/humanoids/human/laugh/crazy/female_crazylaugh_1.ogg',
 				), 50, 1)
 			else
 				target.playsound_local(source, pick(
 				'sound/mobs/humanoids/human/laugh/male_laugh_1.ogg',
 				'sound/mobs/humanoids/human/laugh/male_laugh_2.ogg',
-				'sound/mobs/humanoids/human/laugh/male_chuckle_1.ogg',
-				'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_1.ogg',
-				'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_2.ogg',
-				'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_3.ogg',
-				'sound/mobs/humanoids/human/laugh/madness/male_crazylaugh_4.ogg',
+				'sound/mobs/humanoids/human/laugh/chuckle/male_chuckle_1.ogg',
+				'sound/mobs/humanoids/human/laugh/crazy/male_crazylaugh_1.ogg',
+				'sound/mobs/humanoids/human/laugh/crazy/male_crazylaugh_2.ogg',
+				'sound/mobs/humanoids/human/laugh/crazy/male_crazylaugh_3.ogg',
+				'sound/mobs/humanoids/human/laugh/crazy/male_crazylaugh_4.ogg',
 				 ), 50, 1)
 		if("creepy")
 		//These sounds are (mostly) taken from Hidden: Source
