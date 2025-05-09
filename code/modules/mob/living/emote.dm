@@ -42,12 +42,6 @@
 	hands_use_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
-/datum/emote/living/chuckle
-	key = "chuckle"
-	key_third_person = "chuckles"
-	message = "chuckles."
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-
 /datum/emote/living/collapse
 	key = "collapse"
 	key_third_person = "collapses"
@@ -265,6 +259,17 @@
 	if(!istype(user))
 		return
 	return user.dna.species.get_laugh_sound(user)
+
+/datum/emote/living/laugh/chuckle
+	key = "chuckle"
+	key_third_person = "chuckles"
+	message = "chuckles."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+
+/datum/emote/living/laugh/chuckle/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_chuckle_sound(user)
 
 /datum/emote/living/laugh/crazy
 	key = "crazylaugh"
