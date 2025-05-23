@@ -2301,7 +2301,6 @@ GLOBAL_LIST_EMPTY(selectable_races)
 	if(human.body_type == FEMALE)
 		return pick('sound/mobs/humanoids/human/laugh/female_laugh_1.ogg',
 		'sound/mobs/humanoids/human/laugh/female_laugh_2.ogg',
-		'sound/mobs/humanoids/human/laugh/female_laugh_3.ogg',
 		)
 	return pick(
 		'sound/mobs/humanoids/human/laugh/male_laugh_1.ogg',
@@ -2321,7 +2320,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 
 /datum/species/proc/get_crazylaugh_sound(mob/living/carbon/human/human)
 	if(human.body_type == FEMALE)
-		return pick('sound/mobs/humanoids/human/laugh/crazy/female_crazylaugh_1.ogg',
+		return pick(
+		'sound/mobs/humanoids/human/laugh/crazy/female_crazylaugh_1.ogg',
+		'sound/mobs/humanoids/human/laugh/crazy/female_crazylaugh_2.ogg',
 		)
 	return pick(
 		'sound/mobs/humanoids/human/laugh/crazy/male_crazylaugh_1.ogg',

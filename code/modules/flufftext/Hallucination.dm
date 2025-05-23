@@ -1015,7 +1015,6 @@ GLOBAL_LIST_INIT(malk_hallucinations, list(
 				target.playsound_local(source, pick(
 				'sound/mobs/humanoids/human/laugh/female_laugh_1.ogg',
 				'sound/mobs/humanoids/human/laugh/female_laugh_2.ogg',
-				'sound/mobs/humanoids/human/laugh/female_laugh_3.ogg',
 				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_1.ogg',
 				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_2.ogg',
 				'sound/mobs/humanoids/human/laugh/chuckle/female_chuckle_3.ogg',
