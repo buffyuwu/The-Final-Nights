@@ -1,0 +1,365 @@
+/mob/living/carbon/human/npc/sabbat/shovelhead
+	name = "Loh ebanii"
+	a_intent = INTENT_HARM
+	hostile = TRUE
+	fights_anyway = TRUE
+	old_movement = TRUE //dont start pathing down the sidewalk
+
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/LateInitialize()
+	. = ..()
+	if(role_weapons_chances.Find(type))
+		for(var/weapon in role_weapons_chances[type])
+			if(prob(role_weapons_chances[type][weapon]))
+				my_weapon = new weapon(src)
+				break
+	if(!my_weapon && my_weapon_type)
+		my_weapon = new my_weapon_type(src)
+
+
+
+	if(my_weapon)
+		has_weapon = TRUE
+		equip_to_appropriate_slot(my_weapon)
+
+	if(my_backup_weapon_type)
+		my_backup_weapon = new my_backup_weapon_type(src)
+		equip_to_appropriate_slot(my_backup_weapon)
+
+	roundstart_vampire = FALSE
+	set_species(/datum/species/kindred)
+	clane = new /datum/vampireclane/caitiff()
+	generation = 12
+	ADD_TRAIT(src, TRAIT_MESSY_EATER, "sabbat_shovelhead")
+	is_criminal = TRUE
+	AssignSocialRole(pick(/datum/socialrole/usualmale, /datum/socialrole/usualfemale))
+	if(wear_mask)
+		wear_mask.add_mob_blood(src)
+		update_inv_wear_mask()
+	if(head)
+		head.add_mob_blood(src)
+		update_inv_head()
+	if(wear_suit)
+		wear_suit.add_mob_blood(src)
+		update_inv_wear_suit()
+	if(w_uniform)
+		w_uniform.add_mob_blood(src)
+		update_inv_w_uniform()
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/death(gibbed)
+	..()
+	dust(TRUE)
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/torpor(source)
+	..()
+	dust(TRUE)
+
+//If an npc's item has TRAIT_NODROP, we NEVER drop it, even if it is forced.
+/mob/living/carbon/human/npc/sabbat/shovelhead/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE)
+	if(I && HAS_TRAIT(I, TRAIT_NODROP))
+		return FALSE
+	. = ..()
+//============================================================
+
+
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/AssignSocialRole(datum/socialrole/S, var/dont_random = FALSE)
+	if(!S)
+		return
+	physique = rand(1, max_stat)
+	social = rand(1, max_stat)
+	mentality = rand(1, max_stat)
+	lockpicking = rand(1, max_stat)
+	blood = rand(1, 2)
+	maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(physique))
+	health = round(initial(health)+(initial(health)/3)*(physique))
+	last_health = health
+	socialrole = new S()
+	is_criminal = socialrole.is_criminal
+	if(GLOB.winter && !length(socialrole.suits))
+		socialrole.suits = list(/obj/item/clothing/suit/vampire/coat/winter, /obj/item/clothing/suit/vampire/coat/winter/alt)
+	if(GLOB.winter && !length(socialrole.neck))
+		if(prob(50))
+			socialrole.neck = list(/obj/item/clothing/neck/vampire/scarf/red,
+							/obj/item/clothing/neck/vampire/scarf,
+							/obj/item/clothing/neck/vampire/scarf/blue,
+							/obj/item/clothing/neck/vampire/scarf/green,
+							/obj/item/clothing/neck/vampire/scarf/white)
+	if(!dont_random)
+		gender = pick(MALE, FEMALE)
+		if(socialrole.preferedgender)
+			gender = socialrole.preferedgender
+		body_type = gender
+		var/list/m_names = list()
+		var/list/f_names = list()
+		var/list/s_names = list()
+		if(socialrole.male_names)
+			m_names = socialrole.male_names
+		else
+			m_names = GLOB.first_names_male
+		if(socialrole.female_names)
+			f_names = socialrole.female_names
+		else
+			f_names = GLOB.first_names_female
+		if(socialrole.surnames)
+			s_names = socialrole.surnames
+		else
+			s_names = GLOB.last_names
+		age = rand(socialrole.min_age, socialrole.max_age)
+		skin_tone = pick(socialrole.s_tones)
+		if(age >= 55)
+			hair_color = "#a2a2a2"
+			facial_hair_color = hair_color
+		else
+			hair_color = pick(socialrole.hair_colors)
+			facial_hair_color = hair_color
+		if(gender == MALE)
+			hairstyle = pick(socialrole.male_hair)
+			if(prob(25) || age >= 25)
+				facial_hairstyle = pick(socialrole.male_facial)
+			else
+				facial_hairstyle = "Shaved"
+			real_name = "[pick(m_names)] [pick(s_names)]"
+		else
+			hairstyle = pick(socialrole.female_hair)
+			facial_hairstyle = "Shaved"
+			real_name = "[pick(f_names)] [pick(s_names)]"
+		name = real_name
+		dna.real_name = real_name
+		var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
+		if(organ_eyes)
+			organ_eyes.eye_color = random_eye_color()
+		underwear = random_underwear(gender)
+		if(prob(50))
+			underwear_color = organ_eyes.eye_color
+		if(prob(50) || gender == FEMALE)
+			undershirt = random_undershirt(gender)
+		if(prob(25))
+			socks = random_socks()
+		update_body()
+		update_hair()
+		update_body_parts()
+
+	var/datum/outfit/O = new()
+	if(length(socialrole.backpacks))
+		O.back = pick(socialrole.backpacks)
+	if(length(socialrole.uniforms))
+		O.uniform = pick(socialrole.uniforms)
+	if(length(socialrole.belts))
+		O.belt = pick(socialrole.belts)
+	if(length(socialrole.suits))
+		O.suit = pick(socialrole.suits)
+	if(length(socialrole.gloves))
+		O.gloves = pick(socialrole.gloves)
+	if(length(socialrole.shoes))
+		O.shoes = pick(socialrole.shoes)
+	if(length(socialrole.hats))
+		O.head = pick(socialrole.hats)
+	if(length(socialrole.masks))
+		O.mask = pick(socialrole.masks)
+	if(length(socialrole.neck))
+		O.neck = pick(socialrole.neck)
+	if(length(socialrole.ears))
+		O.ears = pick(socialrole.ears)
+	if(length(socialrole.glasses))
+		O.glasses = pick(socialrole.glasses)
+	if(length(socialrole.inhand_items))
+		O.r_hand = pick(socialrole.inhand_items)
+	if(socialrole.id_type)
+		O.id = socialrole.id_type
+	if(O.uniform && length(socialrole.pockets))
+		O.l_pocket = pick(socialrole.pockets)
+		if(length(socialrole.pockets) > 1 && prob(50))
+			var/list/another_pocket = socialrole.pockets.Copy()
+			another_pocket -= O.l_pocket
+			O.r_pocket = pick(another_pocket)
+	equipOutfit(O)
+	qdel(O)
+
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/RealisticSay(message)
+	return
+
+/mob/living/carbon/human/Bump(atom/Obstacle)
+	. = ..()
+	var/mob/living/carbon/human/npc/sabbat/shovelhead/NPC = locate() in get_turf(Obstacle)
+	if(NPC)
+		NPC.Aggro(src)
+
+
+/mob/living/carbon/human/toggle_resting()
+	..()
+	update_shadow()
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/attack_hand(mob/living/attacker)
+	if(attacker)
+		for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+			NEPIC.Aggro(attacker)
+		Aggro(attacker, TRUE)
+	..()
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/on_hit(obj/projectile/P)
+	. = ..()
+	if(P)
+		if(P.firer)
+			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+				NEPIC.Aggro(P.firer)
+			Aggro(P.firer, TRUE)
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(throwingdatum?.thrower && (AM.throwforce > 5 || (AM.throwforce && src.health < src.maxHealth)))
+		Aggro(throwingdatum.thrower, TRUE)
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/attackby(obj/item/W, mob/living/attacker, params)
+	. = ..()
+	if(attacker)
+		if(W.force > 5 || (W.force && src.health < src.maxHealth))
+			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+				NEPIC.Aggro(attacker)
+			Aggro(attacker, TRUE)
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/grabbedby(mob/living/carbon/user, supress_message = FALSE)
+	. = ..()
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/EmoteAction()
+	return
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/StareAction()
+	return
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/SpeechAction()
+	return
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/ghoulificate(mob/owner)
+	return FALSE
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/Aggro(mob/victim, attacked = FALSE)
+	if(danger_source != victim)
+		return
+	if(attacked && danger_source != victim)
+		walk(src,0)
+	if(victim == src)
+		return
+	if (istype(victim, /mob/living/carbon/human/npc/sabbat))
+		return
+	if((stat != DEAD) && !HAS_TRAIT(victim, TRAIT_DEATHCOMA))
+		danger_source = victim
+		if(attacked)
+			last_attacker = victim
+			if(health != last_health)
+				last_health = health
+				last_damager = victim
+	if(CheckMove())
+		return
+	if((last_danger_meet + 5 SECONDS) < world.time)
+		last_danger_meet = world.time
+		if(prob(50))
+			if(!my_weapon)
+				if(prob(50))
+					emote("scream")
+
+/mob/living/carbon/human/npc/sabbat/proc/tryDrinkBlood(mob/living/carbon/human/attacker, mob/living/victim)
+	if(victim.client) //dont drink players
+		return
+	if(victim.stat == DEAD || attacker.pulling) //dont drag around corpses
+		attacker.stop_pulling()
+	if(get_dist(src, victim) <= 1)
+		if(!attacker.in_frenzy)
+			attacker.enter_frenzymod()
+		attacker.Stun(50)
+
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
+	if(CheckMove())
+		return
+	var/fire_danger = FALSE
+	for(var/obj/effect/fire/F in range(7, src))
+		if(F)
+			less_danger = F
+			fire_danger = TRUE
+	if(!fire_danger)
+		less_danger = null
+	if(!staying)
+		lifespan = lifespan+1
+	if(!walktarget && !staying)
+		stopturf = rand(1, 2)
+		walktarget = ChoosePath()
+		face_atom(walktarget)
+	if(isturf(loc))
+		if(danger_source)
+			a_intent = INTENT_HARM
+			if(m_intent == MOVE_INTENT_WALK)
+				toggle_move_intent(src)
+			if(!has_weapon && !fights_anyway)
+				var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+				set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+				walk_away(src, danger_source, reqsteps, total_multiplicative_slowdown())
+			if(has_weapon || fights_anyway)
+				var/obj/item/card/id/id_card = danger_source.get_idcard(FALSE)
+				if(!istype(id_card, /obj/item/card/id/police) || is_criminal)
+					if(!spawned_weapon && has_weapon)
+						npc_draw_weapon()
+					if(spawned_weapon && get_active_held_item() != my_weapon)
+						has_weapon = FALSE
+					if(danger_source)
+						if(danger_source == src)
+							danger_source = null
+						else
+							ClickOn(danger_source)
+							if(prob(50))
+								tryDrinkBlood(src, danger_source)
+							face_atom(danger_source)
+							var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+							set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+							walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
+
+			if(isliving(danger_source))
+				var/mob/living/L = danger_source
+				if(L.stat > 2)
+					danger_source = null
+					if(has_weapon)
+						if(get_active_held_item() == my_weapon)
+							npc_stow_weapon()
+						else
+							has_weapon = FALSE
+					walktarget = ChoosePath()
+					a_intent = INTENT_HELP
+
+			if(last_danger_meet+300 <= world.time)
+				danger_source = null
+				if(has_weapon)
+					if(get_active_held_item() == my_weapon)
+						npc_stow_weapon()
+					else
+						has_weapon = FALSE
+				walktarget = ChoosePath()
+				a_intent = INTENT_HELP
+		else if(less_danger)
+			var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+			set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+			walk_away(src, less_danger, reqsteps, total_multiplicative_slowdown())
+			if(prob(25))
+				emote("scream")
+		else if(walktarget && !staying)
+			if(prob(25))
+				toggle_move_intent(src)
+			var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+			set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+			walk_to(src, walktarget, reqsteps, total_multiplicative_slowdown())
+		else //find a victim
+			src.stop_pulling() //stop pulling something if we are
+			for(var/mob/living/carbon/human/victim in oviewers(7, src))
+				if(victim.stat != DEAD)
+					if(istype(victim, /mob/living/carbon/human/npc/sabbat)) //dont attack the homies
+						continue
+					danger_source = victim
+		if(has_weapon && !danger_source)
+			if(spawned_weapon)
+				if(get_active_held_item() == my_weapon)
+					npc_stow_weapon()
+				else
+					has_weapon = FALSE
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
+	return
