@@ -180,19 +180,12 @@
 /mob/living/carbon/human/npc/sabbat/shovelhead/RealisticSay(message)
 	return
 
-/mob/living/carbon/human/Bump(atom/Obstacle)
-	. = ..()
-	var/mob/living/carbon/human/npc/sabbat/shovelhead/NPC = locate() in get_turf(Obstacle)
-	if(NPC)
-		NPC.Aggro(src)
-
-
 /mob/living/carbon/human/toggle_resting()
 	..()
 	update_shadow()
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attack_hand(mob/living/attacker)
-	if(attacker)
+	if(attacker && !danger_source)
 		for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 			NEPIC.Aggro(attacker)
 		Aggro(attacker, TRUE)
@@ -201,7 +194,7 @@
 /mob/living/carbon/human/npc/sabbat/shovelhead/on_hit(obj/projectile/P)
 	. = ..()
 	if(P)
-		if(P.firer)
+		if(P.firer && !danger_source)
 			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 				NEPIC.Aggro(P.firer)
 			Aggro(P.firer, TRUE)
@@ -213,7 +206,7 @@
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attackby(obj/item/W, mob/living/attacker, params)
 	. = ..()
-	if(attacker)
+	if(attacker && !danger_source)
 		if(W.force > 5 || (W.force && src.health < src.maxHealth))
 			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 				NEPIC.Aggro(attacker)
@@ -260,14 +253,13 @@
 					emote("scream")
 
 /mob/living/carbon/human/npc/sabbat/proc/tryDrinkBlood(mob/living/carbon/human/attacker, mob/living/victim)
-	if(victim.client) //dont drink players
-		return
 	if(victim.stat == DEAD || attacker.pulling) //dont drag around corpses
 		attacker.stop_pulling()
 	if(get_dist(src, victim) <= 1)
 		if(!attacker.in_frenzy)
 			attacker.enter_frenzymod()
-		attacker.Stun(50)
+		if(prob(50))
+			attacker.Stun(25)
 
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
@@ -302,7 +294,7 @@
 						npc_draw_weapon()
 					if(spawned_weapon && get_active_held_item() != my_weapon)
 						has_weapon = FALSE
-					if(danger_source)
+					if(danger_source.stat != DEAD)
 						if(danger_source == src)
 							danger_source = null
 						else
@@ -313,6 +305,8 @@
 							var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
 							set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
 							walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
+					else
+						danger_source = null
 
 			if(isliving(danger_source))
 				var/mob/living/L = danger_source
@@ -351,7 +345,7 @@
 			src.stop_pulling() //stop pulling something if we are
 			for(var/mob/living/carbon/human/victim in oviewers(7, src))
 				if(victim.stat != DEAD)
-					if(istype(victim, /mob/living/carbon/human/npc/sabbat)) //dont attack the homies
+					if(istype(victim, /mob/living/carbon/human/npc/sabbat) || danger_source) //dont attack the homies, and if we already have a target, dont look for another one
 						continue
 					danger_source = victim
 		if(has_weapon && !danger_source)
