@@ -231,7 +231,6 @@
 			stop_sound_channel(CHANNEL_BLOOD)
 			drinksomeblood(mob)
 	else
-		last_drinkblood_use = 0
 		if(client)
 			client.images -= suckbar
 		qdel(suckbar)
