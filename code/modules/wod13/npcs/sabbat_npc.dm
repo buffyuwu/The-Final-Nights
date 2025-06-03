@@ -176,6 +176,10 @@
 	equipOutfit(O)
 	qdel(O)
 
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/RealisticSay(message)
+	return
+
 /mob/living/carbon/human/toggle_resting()
 	..()
 	update_shadow()
@@ -223,23 +227,30 @@
 /mob/living/carbon/human/npc/sabbat/shovelhead/ghoulificate(mob/owner)
 	return FALSE
 
-var/list/sabbat_shovelhead_phrases = list(
-	"So... cold...",
-	"Agh... My head...!",
-	"I'm so sorry...",
-	"Please...",
-)
-
 /mob/living/carbon/human/npc/sabbat/shovelhead/Aggro(mob/victim, attacked = FALSE)
+	if(danger_source != victim)
+		return
+	if(attacked && danger_source != victim)
+		walk(src,0)
+	if(victim == src)
+		return
+	if (istype(victim, /mob/living/carbon/human/npc/sabbat))
+		return
+	if((stat != DEAD) && !HAS_TRAIT(victim, TRAIT_DEATHCOMA))
+		danger_source = victim
+		if(attacked)
+			last_attacker = victim
+			if(health != last_health)
+				last_health = health
+				last_damager = victim
 	if(CheckMove())
 		return
-	if(danger_source != victim)
-		src.Stun(5 SECONDS)
-		danger_source = null
-		if(!istype(victim, /mob/living/carbon/human/npc/sabbat/shovelhead))
-			danger_source = victim
-		if(prob(1))
-			RealisticSay(pick(sabbat_shovelhead_phrases))
+	if((last_danger_meet + 5 SECONDS) < world.time)
+		last_danger_meet = world.time
+		if(prob(50))
+			if(!my_weapon)
+				if(prob(50))
+					emote("scream")
 
 /mob/living/carbon/human/npc/sabbat/proc/tryDrinkBlood(mob/living/carbon/human/attacker, mob/living/victim)
 	if(victim.stat == DEAD || attacker.pulling) //dont drag around corpses
@@ -247,30 +258,102 @@ var/list/sabbat_shovelhead_phrases = list(
 	if(get_dist(src, victim) <= 1)
 		if(!attacker.in_frenzy)
 			attacker.enter_frenzymod()
+		if(prob(50))
+			attacker.Stun(25)
+
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
 	if(CheckMove())
 		return
+	var/fire_danger = FALSE
+	for(var/obj/effect/fire/F in range(7, src))
+		if(F)
+			less_danger = F
+			fire_danger = TRUE
+	if(!fire_danger)
+		less_danger = null
+	if(!staying)
+		lifespan = lifespan+1
+	if(!walktarget && !staying)
+		stopturf = rand(1, 2)
+		walktarget = ChoosePath()
+		face_atom(walktarget)
 	if(isturf(loc))
 		if(danger_source)
+			a_intent = INTENT_HARM
+			if(m_intent == MOVE_INTENT_WALK)
+				toggle_move_intent(src)
+			if(!has_weapon && !fights_anyway)
+				var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+				set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+				walk_away(src, danger_source, reqsteps, total_multiplicative_slowdown())
+			if(has_weapon || fights_anyway)
+				var/obj/item/card/id/id_card = danger_source.get_idcard(FALSE)
+				if(!istype(id_card, /obj/item/card/id/police) || is_criminal)
+					if(!spawned_weapon && has_weapon)
+						npc_draw_weapon()
+					if(spawned_weapon && get_active_held_item() != my_weapon)
+						has_weapon = FALSE
+					if(danger_source.stat != DEAD)
+						if(danger_source == src)
+							danger_source = null
+						else
+							ClickOn(danger_source)
+							if(prob(50))
+								tryDrinkBlood(src, danger_source)
+							face_atom(danger_source)
+							var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+							set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+							walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
+					else
+						danger_source = null
+
 			if(isliving(danger_source))
-				if(danger_source.stat != DEAD)
-					ClickOn(danger_source)
-					tryDrinkBlood(src, danger_source)
-					if(prob(50))
-						face_atom(danger_source)
-						var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
-						set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-						walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
-				else
+				var/mob/living/L = danger_source
+				if(L.stat > 2)
 					danger_source = null
+					if(has_weapon)
+						if(get_active_held_item() == my_weapon)
+							npc_stow_weapon()
+						else
+							has_weapon = FALSE
+					walktarget = ChoosePath()
+					a_intent = INTENT_HELP
+
 			if(last_danger_meet+300 <= world.time)
 				danger_source = null
+				if(has_weapon)
+					if(get_active_held_item() == my_weapon)
+						npc_stow_weapon()
+					else
+						has_weapon = FALSE
+				walktarget = ChoosePath()
+				a_intent = INTENT_HELP
+		else if(less_danger)
+			var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+			set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+			walk_away(src, less_danger, reqsteps, total_multiplicative_slowdown())
+			if(prob(25))
+				emote("scream")
+		else if(walktarget && !staying)
+			if(prob(25))
+				toggle_move_intent(src)
+			var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+			set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+			walk_to(src, walktarget, reqsteps, total_multiplicative_slowdown())
 		else //find a victim
-			src.stop_pulling() //stops them from pulling corpses around
+			src.stop_pulling() //stop pulling something if we are
 			for(var/mob/living/carbon/human/victim in oviewers(7, src))
 				if(victim.stat != DEAD)
-					if(istype(victim, /mob/living/carbon/human/npc/sabbat)) //dont attack the homies
+					if(istype(victim, /mob/living/carbon/human/npc/sabbat) || danger_source) //dont attack the homies, and if we already have a target, dont look for another one
 						continue
-					else
-						danger_source = victim
+					danger_source = victim
+		if(has_weapon && !danger_source)
+			if(spawned_weapon)
+				if(get_active_held_item() == my_weapon)
+					npc_stow_weapon()
+				else
+					has_weapon = FALSE
+
+/mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
+	return
