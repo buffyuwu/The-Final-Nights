@@ -96,6 +96,35 @@
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return TRUE
 
+/mob/living/carbon/proc/try_frenzy_bite(target)
+	frenzy_target = target
+	if(get_dist(frenzy_target, src) <= 1)
+		if(isliving(frenzy_target) && frenzy_target.stat != DEAD)
+			if(prob(50))
+				a_intent = INTENT_HARM
+				ClickOn(frenzy_target)
+			if(frenzy_target.bloodpool && (world.time > last_drinkblood_use + 180) && !frenzy_target.client)
+				frenzy_target.grabbedby(src)
+				if(ishuman(frenzy_target))
+					var/mob/living/carbon/human/humie = frenzy_target
+					frenzy_target.emote("scream")
+					humie.add_bite_animation()
+				var/mob/living/carbon/human/vamp = src
+				if(CheckEyewitness(frenzy_target, vamp, 7, FALSE))
+					vamp.AdjustMasquerade(-1)
+				playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
+				frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
+				face_atom(frenzy_target)
+				vamp.drinksomeblood(frenzy_target)
+		else //target died, let go of them
+			frenzy_target = null
+			stop_pulling()
+	else
+		if(prob(50))
+			jump(frenzy_target)
+		step_to(src,frenzy_target,0)
+		face_atom(frenzy_target)
+
 /mob/living/carbon/proc/frenzystep()
 	if(!isturf(loc) || CheckFrenzyMove())
 		return
@@ -120,38 +149,17 @@
 				if(get_dist(src, F) < 1)
 					fear = F
 
-//	if(!fear && !frenzy_target)
-//		return
-
+	var/mob/living/L = frenzy_target
 	if(iskindred(src))
 		if(fear)
 			step_away(src,fear,99)
 			if(prob(25))
 				emote("scream")
 		else
-			var/mob/living/carbon/human/H = src
-			if(get_dist(frenzy_target, src) <= 1)
-				if(isliving(frenzy_target))
-					var/mob/living/L = frenzy_target
-					if(L.bloodpool && L.stat != DEAD && last_drinkblood_use+95 <= world.time)
-						L.grabbedby(src)
-						if(ishuman(L))
-							L.emote("scream")
-							var/mob/living/carbon/human/BT = L
-							BT.add_bite_animation()
-						if(CheckEyewitness(L, src, 7, FALSE))
-							H.AdjustMasquerade(-1)
-						playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
-						L.visible_message("<span class='warning'><b>[src] bites [L]'s neck!</b></span>", "<span class='warning'><b>[src] bites your neck!</b></span>")
-						face_atom(L)
-						H.drinksomeblood(L)
-			else
-				step_to(src,frenzy_target,0)
-				face_atom(frenzy_target)
+			try_frenzy_bite(frenzy_target)
 	else
 		if(get_dist(frenzy_target, src) <= 1)
 			if(isliving(frenzy_target))
-				var/mob/living/L = frenzy_target
 				if(L.stat != DEAD)
 					a_intent = INTENT_HARM
 					if(last_rage_hit+5 < world.time)
@@ -165,32 +173,42 @@
 	var/list/targets = list()
 	if(iskindred(src))
 		for(var/mob/living/L in oviewers(7, src))
-			if(!iskindred(L) && L.bloodpool && L.stat != DEAD)
-				targets += L
-				if(L == frenzy_target)
-					return L
+			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat))
+				if(!iskindred(L) && L.bloodpool && L.stat != DEAD)
+					targets += L
+					if(L == frenzy_target)
+						return L
 	else
 		for(var/mob/living/L in oviewers(7, src))
-			if(L.stat != DEAD)
-				targets += L
-				if(L == frenzy_target)
-					return L
+			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat))
+				if(L.stat != DEAD)
+					targets += L
+					if(L == frenzy_target)
+						return L
 	if(length(targets) > 0)
-		return pick(targets)
+		if(frenzy_target)
+			if(get_dist(src, frenzy_target) > 7)
+				targets -= frenzy_target
+				frenzy_target = null
+				return pick(targets)
+			else
+				return frenzy_target
+		else
+			return pick(targets)
 	else
 		return null
 
 /mob/living/carbon/proc/handle_automated_frenzy()
-	for(var/mob/living/carbon/human/npc/NPC in viewers(5, src))
+	for(var/mob/living/carbon/human/npc/NPC in oviewers(5, src))
 		NPC.Aggro(src)
 	if(isturf(loc))
-		frenzy_target = get_frenzy_targets()
 		if(frenzy_target)
 			var/datum/cb = CALLBACK(src, PROC_REF(frenzystep))
 			var/reqsteps = SSfrenzypool.wait/total_multiplicative_slowdown()
 			for(var/i in 1 to reqsteps)
 				addtimer(cb, (i - 1)*total_multiplicative_slowdown())
 		else
+			frenzy_target = get_frenzy_targets()
 			if(!CheckFrenzyMove())
 				if(isturf(loc))
 					var/turf/T = get_step(loc, pick(NORTH, SOUTH, WEST, EAST))
