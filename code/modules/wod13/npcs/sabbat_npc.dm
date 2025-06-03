@@ -181,7 +181,7 @@
 	update_shadow()
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attack_hand(mob/living/attacker)
-	if(attacker)
+	if(attacker && !danger_source)
 		for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 			NEPIC.Aggro(attacker)
 		Aggro(attacker, TRUE)
@@ -190,7 +190,7 @@
 /mob/living/carbon/human/npc/sabbat/shovelhead/on_hit(obj/projectile/P)
 	. = ..()
 	if(P)
-		if(P.firer)
+		if(P.firer && !danger_source)
 			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 				NEPIC.Aggro(P.firer)
 			Aggro(P.firer, TRUE)
@@ -202,7 +202,7 @@
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attackby(obj/item/W, mob/living/attacker, params)
 	. = ..()
-	if(attacker)
+	if(attacker && !danger_source)
 		if(W.force > 5 || (W.force && src.health < src.maxHealth))
 			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
 				NEPIC.Aggro(attacker)
@@ -234,7 +234,7 @@ var/list/sabbat_shovelhead_phrases = list(
 	if(CheckMove())
 		return
 	if(danger_source != victim)
-		src.Stun(2 SECONDS)
+		src.Stun(5 SECONDS)
 		danger_source = null
 		if(!istype(victim, /mob/living/carbon/human/npc/sabbat/shovelhead))
 			danger_source = victim
@@ -247,21 +247,24 @@ var/list/sabbat_shovelhead_phrases = list(
 	if(get_dist(src, victim) <= 1)
 		if(!attacker.in_frenzy)
 			attacker.enter_frenzymod()
-		ClickOn(victim)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
 	if(CheckMove())
 		return
 	if(isturf(loc))
 		if(danger_source)
-			if(danger_source.stat != DEAD)
-				tryDrinkBlood(src, danger_source)
-				if(prob(75))
-					face_atom(danger_source)
-					var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
-					set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-					walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
-			else
+			if(isliving(danger_source))
+				if(danger_source.stat != DEAD)
+					ClickOn(danger_source)
+					tryDrinkBlood(src, danger_source)
+					if(prob(50))
+						face_atom(danger_source)
+						var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+						set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+						walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
+				else
+					danger_source = null
+			if(last_danger_meet+300 <= world.time)
 				danger_source = null
 		else //find a victim
 			src.stop_pulling() //stops them from pulling corpses around
