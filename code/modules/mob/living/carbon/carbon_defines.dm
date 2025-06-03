@@ -127,7 +127,7 @@
 	var/in_frenzy = FALSE
 	var/frenzy_hardness = 6
 	var/last_frenzy_check = 0
-	var/atom/frenzy_target = null
+	var/mob/living/frenzy_target = null
 	var/last_experience = 0
 
 	var/last_rage_hit = 0
