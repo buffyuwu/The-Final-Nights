@@ -4,25 +4,10 @@
 	hostile = TRUE
 	fights_anyway = TRUE
 	old_movement = TRUE //dont start pathing down the sidewalk
-
+	var/datum/action/blood_heal_action
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/LateInitialize()
 	. = ..()
-	if(role_weapons_chances.Find(type))
-		for(var/weapon in role_weapons_chances[type])
-			if(prob(role_weapons_chances[type][weapon]))
-				my_weapon = new weapon(src)
-				break
-	if(!my_weapon && my_weapon_type)
-		my_weapon = new my_weapon_type(src)
-
-	if(my_weapon)
-		has_weapon = TRUE
-		equip_to_appropriate_slot(my_weapon)
-
-	if(my_backup_weapon_type)
-		my_backup_weapon = new my_backup_weapon_type(src)
-		equip_to_appropriate_slot(my_backup_weapon)
 
 	//assign their special stuff. species, clane, etc
 	roundstart_vampire = FALSE
@@ -31,8 +16,15 @@
 	generation = 12
 	ADD_TRAIT(src, TRAIT_MESSY_EATER, "sabbat_shovelhead")
 	is_criminal = TRUE
+
+	//dress them, name them
 	AssignSocialRole(pick(/datum/socialrole/usualmale, /datum/socialrole/usualfemale))
 
+	//store actions to use later based on what we rolled for disciplines
+	//TODO: add randomly rolled disciplines
+	for(var/datum/action/discipline/action in actions)
+		if(action.discipline.name == "Bloodheal")
+			blood_heal_action = action
 
 	//bloody their clothes
 	if(wear_mask)
@@ -53,7 +45,6 @@
 	dust(TRUE)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/torpor(source)
-	..()
 	dust(TRUE)
 
 //If an npc's item has TRAIT_NODROP, we NEVER drop it, even if it is forced.
@@ -92,21 +83,6 @@
 		if(socialrole.preferedgender)
 			gender = socialrole.preferedgender
 		body_type = gender
-		var/list/m_names = list()
-		var/list/f_names = list()
-		var/list/s_names = list()
-		if(socialrole.male_names)
-			m_names = socialrole.male_names
-		else
-			m_names = GLOB.first_names_male
-		if(socialrole.female_names)
-			f_names = socialrole.female_names
-		else
-			f_names = GLOB.first_names_female
-		if(socialrole.surnames)
-			s_names = socialrole.surnames
-		else
-			s_names = GLOB.last_names
 		age = rand(socialrole.min_age, socialrole.max_age)
 		skin_tone = pick(socialrole.s_tones)
 		if(age >= 55)
@@ -121,11 +97,10 @@
 				facial_hairstyle = pick(socialrole.male_facial)
 			else
 				facial_hairstyle = "Shaved"
-			real_name = "[pick(m_names)] [pick(s_names)]"
 		else
 			hairstyle = pick(socialrole.female_hair)
 			facial_hairstyle = "Shaved"
-			real_name = "[pick(f_names)] [pick(s_names)]"
+		real_name = pick("Shovelhead","Mass-embraced Lunatic", "Reanimated Psycho")
 		name = real_name
 		dna.real_name = real_name
 		var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
@@ -246,6 +221,9 @@ var/list/shovelhead_attack_phrases = list(
 	"It... hurts...",
 )
 
+/mob/living/carbon/human/npc/sabbat/shovelhead/Annoy(atom/source)
+	return
+
 /mob/living/carbon/human/npc/sabbat/shovelhead/Aggro(mob/victim, attacked = FALSE)
 	if(CheckMove())
 		return
@@ -262,7 +240,12 @@ var/list/shovelhead_attack_phrases = list(
 		if(!in_frenzy)
 			bloodpool = 5
 			enter_frenzymod()
-
+		if(prob(50) && (getBruteLoss() + getFireLoss() >= 40) && (bloodpool > 2)) //we are wounded, heal ourselves if we can
+			blood_heal_action.Trigger()
+			visible_message(
+			span_warning("[src]'s wounds heal with unnatural speed!"),
+			span_warning("Your wounds visibly heal with unnatural speed!")
+			)
 /mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
 	return
 
@@ -277,5 +260,5 @@ var/list/shovelhead_attack_phrases = list(
 			var/turf/T = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
 			face_atom(T)
 			step_to(src,T,0)
-		if(prob(5))
+		if(prob(1))
 			RealisticSay(pick(shovelhead_idle_phrases))

@@ -96,26 +96,28 @@
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return TRUE
 
+/mob/living/carbon/proc/do_frenzy_bite(target)
+	if(frenzy_target?.bloodpool && (world.time > last_drinkblood_use + 180) && !frenzy_target.client)
+		frenzy_target.grabbedby(src)
+		if(ishuman(frenzy_target))
+			var/mob/living/carbon/human/humie = frenzy_target
+			frenzy_target.emote("scream")
+			humie.add_bite_animation()
+		var/mob/living/carbon/human/vamp = src
+		if(CheckEyewitness(frenzy_target, vamp, 7, FALSE))
+			vamp.AdjustMasquerade(-1)
+		playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
+		frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
+		face_atom(frenzy_target)
+		vamp.drinksomeblood(frenzy_target)
+
 /mob/living/carbon/proc/try_frenzy_bite(target)
 	frenzy_target = target
 	if(get_dist(frenzy_target, src) <= 1)
 		if(isliving(frenzy_target) && frenzy_target.stat != DEAD)
-			if(prob(50))
-				a_intent = INTENT_HARM
-				ClickOn(frenzy_target)
-			if(frenzy_target.bloodpool && (world.time > last_drinkblood_use + 180) && !frenzy_target.client)
-				frenzy_target.grabbedby(src)
-				if(ishuman(frenzy_target))
-					var/mob/living/carbon/human/humie = frenzy_target
-					frenzy_target.emote("scream")
-					humie.add_bite_animation()
-				var/mob/living/carbon/human/vamp = src
-				if(CheckEyewitness(frenzy_target, vamp, 7, FALSE))
-					vamp.AdjustMasquerade(-1)
-				playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
-				frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
-				face_atom(frenzy_target)
-				vamp.drinksomeblood(frenzy_target)
+			a_intent = INTENT_HARM
+			ClickOn(frenzy_target)
+			do_frenzy_bite(frenzy_target)
 		else //target died, let go of them
 			frenzy_target = null
 			stop_pulling()
