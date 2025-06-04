@@ -69,16 +69,7 @@
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/torpor(source)
 	dust(TRUE)
-
-//If an npc's item has TRAIT_NODROP, we NEVER drop it, even if it is forced.
-/mob/living/carbon/human/npc/sabbat/shovelhead/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE)
-	if(I && HAS_TRAIT(I, TRAIT_NODROP))
-		return FALSE
-	. = ..()
 //============================================================
-
-
-
 /mob/living/carbon/human/npc/sabbat/shovelhead/AssignSocialRole(datum/socialrole/S, var/dont_random = FALSE)
 	if(!S)
 		return

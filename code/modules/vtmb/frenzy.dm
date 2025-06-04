@@ -110,14 +110,16 @@
 		frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
 		face_atom(frenzy_target)
 		vamp.drinksomeblood(frenzy_target)
+		last_drinkblood_use = world.time //manually set this just in-case the sabbat moves and cancels its own animation. this prevents spammy bites
 
 /mob/living/carbon/proc/try_frenzy_bite(target)
 	frenzy_target = target
 	if(get_dist(frenzy_target, src) <= 1)
-		if(isliving(frenzy_target) && frenzy_target.stat != DEAD && !HAS_TRAIT(src, TRAIT_DEATHCOMA))
+		if(isliving(frenzy_target) && frenzy_target.stat != DEAD && !HAS_TRAIT(frenzy_target, TRAIT_DEATHCOMA))
 			a_intent = INTENT_HARM
-			ClickOn(frenzy_target)
-			do_frenzy_bite(frenzy_target)
+			if(prob(75)) //prevent AIs from having frame perfect attacks every tick
+				UnarmedAttack(frenzy_target)
+				do_frenzy_bite(frenzy_target)
 		else //target died, let go of them
 			frenzy_target = null
 			stop_pulling()
@@ -175,14 +177,14 @@
 	var/list/targets = list()
 	if(iskindred(src))
 		for(var/mob/living/L in oviewers(7, src))
-			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat))
+			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat) && !istype(L, /mob/living/simple_animal/hostile))
 				if(L.bloodpool && L.stat != DEAD)
 					targets += L
 					if(L == frenzy_target)
 						return L
 	else
 		for(var/mob/living/L in oviewers(7, src))
-			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat))
+			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat) && !istype(L, /mob/living/simple_animal/hostile))
 				if(L.stat != DEAD)
 					targets += L
 					if(L == frenzy_target)
