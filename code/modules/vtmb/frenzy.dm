@@ -114,7 +114,7 @@
 /mob/living/carbon/proc/try_frenzy_bite(target)
 	frenzy_target = target
 	if(get_dist(frenzy_target, src) <= 1)
-		if(isliving(frenzy_target) && frenzy_target.stat != DEAD)
+		if(isliving(frenzy_target) && frenzy_target.stat != DEAD && !HAS_TRAIT(src, TRAIT_DEATHCOMA))
 			a_intent = INTENT_HARM
 			ClickOn(frenzy_target)
 			do_frenzy_bite(frenzy_target)
@@ -176,7 +176,7 @@
 	if(iskindred(src))
 		for(var/mob/living/L in oviewers(7, src))
 			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat))
-				if(!iskindred(L) && L.bloodpool && L.stat != DEAD)
+				if(L.bloodpool && L.stat != DEAD)
 					targets += L
 					if(L == frenzy_target)
 						return L
