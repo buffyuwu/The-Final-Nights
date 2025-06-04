@@ -47,7 +47,7 @@
 				if(HS.my_creator)
 					SEND_SIGNAL(HS.my_creator, COMSIG_PATH_HIT, PATH_SCORE_DOWN, 0)
 			else
-				if(ishuman(last_attacker))
+				if(ishuman(last_attacker) && !isnpc(last_attacker))
 					var/mob/living/carbon/human/HM = last_attacker
 					SEND_SIGNAL(HM, COMSIG_PATH_HIT, PATH_SCORE_DOWN, 0)
 
