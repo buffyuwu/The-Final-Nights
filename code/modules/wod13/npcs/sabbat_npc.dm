@@ -5,14 +5,30 @@
 	fights_anyway = TRUE
 	old_movement = TRUE //dont start pathing down the sidewalk
 	var/datum/action/blood_heal_action
+	var/list/untargeted_disciplines = list()
+	var/list/targeted_disciplines = list()
+	var/list/possible_clan = list(/datum/vampireclane/toreador, /datum/vampireclane/brujah, /datum/vampireclane/malkavian, /datum/vampireclane/gangrel)
+	var/datum/action/discipline/activated_action //mostly for debugging purposes, this stores the npc's last activated discipline action
+//============================================================
+// subtypes of shovelhead, each with a different clan
+/mob/living/carbon/human/npc/sabbat/shovelhead/toreador
+	possible_clan = list(/datum/vampireclane/toreador)
+/mob/living/carbon/human/npc/sabbat/shovelhead/brujah
+	possible_clan = list(/datum/vampireclane/brujah)
+/mob/living/carbon/human/npc/sabbat/shovelhead/malkavian
+	possible_clan = list(/datum/vampireclane/malkavian)
+/mob/living/carbon/human/npc/sabbat/shovelhead/gangrel
+	possible_clan = list(/datum/vampireclane/gangrel)
+//============================================================
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/LateInitialize()
 	. = ..()
-
-	//assign their special stuff. species, clane, etc
+	//assign their special stuff. species, clan, etc
 	roundstart_vampire = FALSE
 	set_species(/datum/species/kindred)
-	clane = new /datum/vampireclane/caitiff()
+	var/random_clan = pick(possible_clan)
+	clane = new random_clan()
+	create_disciplines(FALSE, clane.clane_disciplines)
 	generation = 12
 	ADD_TRAIT(src, TRAIT_MESSY_EATER, "sabbat_shovelhead")
 	is_criminal = TRUE
@@ -21,10 +37,17 @@
 	AssignSocialRole(pick(/datum/socialrole/usualmale, /datum/socialrole/usualfemale))
 
 	//store actions to use later based on what we rolled for disciplines
-	//TODO: add randomly rolled disciplines
 	for(var/datum/action/discipline/action in actions)
 		if(action.discipline.name == "Bloodheal")
 			blood_heal_action = action
+			continue // we don't want to add this to the targeted/untargeted lists
+		else if(action.discipline.name == "Auspex")
+			continue // or this. everything else should be OK
+		var/datum/discipline_power/power = action.discipline.current_power
+		if(power.target_type == NONE) //build our list of targeted and untargeted disciplines
+			untargeted_disciplines += action
+		else
+			targeted_disciplines += action
 
 	//bloody their clothes
 	if(wear_mask)
@@ -233,19 +256,48 @@ var/list/shovelhead_attack_phrases = list(
 		frenzy_target = victim
 		RealisticSay(pick(shovelhead_attack_phrases)) //dialogue when we switch targets
 
+/mob/living/carbon/human/npc/sabbat/shovelhead/proc/try_use_discipline(mob/target)
+	if(frenzy_target)
+		frenzy_target = target
+	else if(!target)
+		return
+	if(target && prob(50) && can_see(src, target, 7) && (bloodpool > 2))
+		if(prob(50))
+			activated_action = pick(untargeted_disciplines)
+			if(activated_action)
+				activated_action.Trigger()
+				visible_message(
+					span_warning("[src] uses [activated_action.discipline.name]!"),
+					span_warning("You use [activated_action.discipline.name]!")
+				)
+		else if(length(targeted_disciplines) > 0)
+			activated_action = pick(targeted_disciplines)
+			var/datum/discipline_power/queued_power = activated_action.discipline.current_power
+			if(activated_action && queued_power.can_activate(target, FALSE))
+				activated_action.targeting = TRUE
+				activated_action.handle_click(src, target)
+				visible_message(
+					span_warning("[src] uses [activated_action.discipline.name]!"),
+					span_warning("You use [activated_action.discipline.name]!")
+				)
+
 /mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
 	if(CheckMove())
 		return
-	if(isturf(loc))
+	if(isturf(loc) && !client) //just in case someone running an event takes over a shovelhead, we dont want to force them to use the AI
 		if(!in_frenzy)
 			bloodpool = 5
 			enter_frenzymod()
-		if(prob(50) && (getBruteLoss() + getFireLoss() >= 40) && (bloodpool > 2)) //we are wounded, heal ourselves if we can
+		//we are wounded, heal ourselves if we can
+		if(prob(25) && (getBruteLoss() + getFireLoss() >= 60) && (bloodpool > 2))
 			blood_heal_action.Trigger()
 			visible_message(
 			span_warning("[src]'s wounds heal with unnatural speed!"),
 			span_warning("Your wounds visibly heal with unnatural speed!")
 			)
+		if(frenzy_target)
+			try_use_discipline(frenzy_target)
+
 /mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
 	return
 
