@@ -101,21 +101,21 @@
 		return
 	if(!frenzy_target?.bloodpool)
 		return
+	if(!COOLDOWN_FINISHED(src, frenzy_bite_cooldown))
+		return
 
-	if(COOLDOWN_FINISHED(src, frenzy_bite_cooldown))
-		frenzy_target.grabbedby(src)
-		if(ishuman(frenzy_target))
-			var/mob/living/carbon/human/humie = frenzy_target
-			frenzy_target.emote("scream")
-			humie.add_bite_animation()
-		var/mob/living/carbon/human/vamp = src
-		if(CheckEyewitness(frenzy_target, vamp, 7, FALSE))
-			vamp.AdjustMasquerade(-1)
-		playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
-		frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
-		face_atom(frenzy_target)
-		vamp.drinksomeblood(frenzy_target)
-		COOLDOWN_START(src, frenzy_bite_cooldown, rand(6 SECONDS, 12 SECONDS))
+	COOLDOWN_START(src, frenzy_bite_cooldown, rand(6 SECONDS, 12 SECONDS))
+	frenzy_target.grabbedby(src)
+	if(ishuman(frenzy_target))
+		var/mob/living/carbon/human/humie = frenzy_target
+		frenzy_target.emote("scream")
+		humie.add_bite_animation()
+	var/mob/living/carbon/human/vamp = src
+	if(CheckEyewitness(frenzy_target, vamp, 7, FALSE))
+		vamp.AdjustMasquerade(-1)
+	playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
+	frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
+	vamp.drinksomeblood(frenzy_target)
 
 /mob/living/carbon/proc/try_frenzy_bite(target)
 	frenzy_target = target
@@ -123,6 +123,7 @@
 		if(isliving(frenzy_target) && frenzy_target.stat != DEAD && !HAS_TRAIT(frenzy_target, TRAIT_DEATHCOMA))
 			a_intent = INTENT_HARM
 			if(prob(75)) //prevent AIs from having frame perfect attacks every tick
+				face_atom(frenzy_target)
 				UnarmedAttack(frenzy_target)
 				do_frenzy_bite(frenzy_target)
 		else //target died, let go of them
