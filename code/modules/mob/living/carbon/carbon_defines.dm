@@ -124,6 +124,7 @@
 	var/celerity_visual = FALSE
 	var/potential = 0
 
+	COOLDOWN_DECLARE(frenzy_bite_cooldown)
 	var/in_frenzy = FALSE
 	var/frenzy_hardness = 6
 	var/last_frenzy_check = 0

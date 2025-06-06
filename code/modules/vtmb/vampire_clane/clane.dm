@@ -54,18 +54,19 @@ And it also helps for the character set panel
 
 /datum/vampireclane/proc/post_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
-	if(H.client) //dont give npcs keys or special gameplay related quirky things
-		if(violating_appearance && H.roundstart_vampire)
-			if(length(GLOB.masquerade_latejoin))
-				var/obj/effect/landmark/latejoin_masquerade/LM = pick(GLOB.masquerade_latejoin)
-				if(LM)
-					H.forceMove(LM.loc)
+	if(!H.client) //dont give npcs keys or special gameplay related quirky things
+		return
+	if(violating_appearance && H.roundstart_vampire)
+		if(length(GLOB.masquerade_latejoin))
+			var/obj/effect/landmark/latejoin_masquerade/LM = pick(GLOB.masquerade_latejoin)
+			if(LM)
+				H.forceMove(LM.loc)
 
-		if(clan_keys)
-			H.put_in_hands(new clan_keys(H))
+	if(clan_keys)
+		H.put_in_hands(new clan_keys(H))
 
-		H.AddComponent(/datum/component/morality)
-		H.mind.damned = 1
+	H.AddComponent(/datum/component/morality)
+	H.mind.damned = 1
 
 /mob/living/carbon
 	var/datum/relationship/Myself

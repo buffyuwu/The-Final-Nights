@@ -1,5 +1,5 @@
 /mob/living/carbon/human/npc/sabbat/shovelhead
-	name = "Loh ebanii"
+	name = "Shovelhead"
 	a_intent = INTENT_HARM
 	hostile = TRUE
 	fights_anyway = TRUE
@@ -71,120 +71,30 @@
 	dust(TRUE)
 //============================================================
 /mob/living/carbon/human/npc/sabbat/shovelhead/AssignSocialRole(datum/socialrole/S, var/dont_random = FALSE)
-	if(!S)
-		return
-	physique = rand(1, max_stat)
-	social = rand(1, max_stat)
-	mentality = rand(1, max_stat)
-	lockpicking = rand(1, max_stat)
-	blood = rand(1, 2)
-	maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(physique))
-	health = round(initial(health)+(initial(health)/3)*(physique))
-	last_health = health
-	socialrole = new S()
-	is_criminal = socialrole.is_criminal
-	if(GLOB.winter && !length(socialrole.suits))
-		socialrole.suits = list(/obj/item/clothing/suit/vampire/coat/winter, /obj/item/clothing/suit/vampire/coat/winter/alt)
-	if(GLOB.winter && !length(socialrole.neck))
-		if(prob(50))
-			socialrole.neck = list(/obj/item/clothing/neck/vampire/scarf/red,
-							/obj/item/clothing/neck/vampire/scarf,
-							/obj/item/clothing/neck/vampire/scarf/blue,
-							/obj/item/clothing/neck/vampire/scarf/green,
-							/obj/item/clothing/neck/vampire/scarf/white)
-	if(!dont_random)
-		gender = pick(MALE, FEMALE)
-		if(socialrole.preferedgender)
-			gender = socialrole.preferedgender
-		body_type = gender
-		age = rand(socialrole.min_age, socialrole.max_age)
-		skin_tone = pick(socialrole.s_tones)
-		if(age >= 55)
-			hair_color = "#a2a2a2"
-			facial_hair_color = hair_color
-		else
-			hair_color = pick(socialrole.hair_colors)
-			facial_hair_color = hair_color
-		if(gender == MALE)
-			hairstyle = pick(socialrole.male_hair)
-			if(prob(25) || age >= 25)
-				facial_hairstyle = pick(socialrole.male_facial)
-			else
-				facial_hairstyle = "Shaved"
-		else
-			hairstyle = pick(socialrole.female_hair)
-			facial_hairstyle = "Shaved"
-		real_name = pick("Shovelhead","Mass-embraced Lunatic", "Reanimated Psycho")
-		name = real_name
-		dna.real_name = real_name
-		var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
-		if(organ_eyes)
-			organ_eyes.eye_color = random_eye_color()
-		underwear = random_underwear(gender)
-		if(prob(50))
-			underwear_color = organ_eyes.eye_color
-		if(prob(50) || gender == FEMALE)
-			undershirt = random_undershirt(gender)
-		if(prob(25))
-			socks = random_socks()
-		update_body()
-		update_hair()
-		update_body_parts()
-
-	var/datum/outfit/O = new()
-	if(length(socialrole.backpacks))
-		O.back = pick(socialrole.backpacks)
-	if(length(socialrole.uniforms))
-		O.uniform = pick(socialrole.uniforms)
-	if(length(socialrole.belts))
-		O.belt = pick(socialrole.belts)
-	if(length(socialrole.suits))
-		O.suit = pick(socialrole.suits)
-	if(length(socialrole.gloves))
-		O.gloves = pick(socialrole.gloves)
-	if(length(socialrole.shoes))
-		O.shoes = pick(socialrole.shoes)
-	if(length(socialrole.hats))
-		O.head = pick(socialrole.hats)
-	if(length(socialrole.masks))
-		O.mask = pick(socialrole.masks)
-	if(length(socialrole.neck))
-		O.neck = pick(socialrole.neck)
-	if(length(socialrole.ears))
-		O.ears = pick(socialrole.ears)
-	if(length(socialrole.glasses))
-		O.glasses = pick(socialrole.glasses)
-	if(length(socialrole.inhand_items))
-		O.r_hand = pick(socialrole.inhand_items)
-	if(socialrole.id_type)
-		O.id = socialrole.id_type
-	if(O.uniform && length(socialrole.pockets))
-		O.l_pocket = pick(socialrole.pockets)
-		if(length(socialrole.pockets) > 1 && prob(50))
-			var/list/another_pocket = socialrole.pockets.Copy()
-			another_pocket -= O.l_pocket
-			O.r_pocket = pick(another_pocket)
-	equipOutfit(O)
-	qdel(O)
+	. = ..()
+	real_name = pick("Shovelhead","Mass-embraced Lunatic", "Reanimated Psycho")
+	name = real_name
+	dna.real_name = real_name
 
 /mob/living/carbon/human/toggle_resting()
 	..()
 	update_shadow()
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attack_hand(mob/living/attacker)
-	if(attacker)
-		for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
-			NEPIC.Aggro(attacker)
-		Aggro(attacker, TRUE)
+	if(!attacker)
+		return
+	for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+		NEPIC.Aggro(attacker)
+	Aggro(attacker, TRUE)
 	..()
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/on_hit(obj/projectile/P)
 	. = ..()
-	if(P)
-		if(P.firer)
-			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
-				NEPIC.Aggro(P.firer)
-			Aggro(P.firer, TRUE)
+	if(!P || !P.firer)
+		return
+	for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+		NEPIC.Aggro(P.firer)
+	Aggro(P.firer, TRUE)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
 	. = ..()
@@ -193,14 +103,12 @@
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/attackby(obj/item/W, mob/living/attacker, params)
 	. = ..()
-	if(attacker)
-		if(W.force > 5 || (W.force && src.health < src.maxHealth))
-			for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
-				NEPIC.Aggro(attacker)
-			Aggro(attacker, TRUE)
-
-/mob/living/carbon/human/npc/sabbat/shovelhead/grabbedby(mob/living/carbon/user, supress_message = FALSE)
-	. = ..()
+	if(!attacker)
+		return
+	if(W.force > 5 || (W.force && src.health < src.maxHealth))
+		for(var/mob/living/carbon/human/npc/sabbat/shovelhead/NEPIC in oviewers(7, src))
+			NEPIC.Aggro(attacker)
+		Aggro(attacker, TRUE)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/EmoteAction()
 	return
@@ -275,19 +183,24 @@ var/list/shovelhead_attack_phrases = list(
 /mob/living/carbon/human/npc/sabbat/shovelhead/handle_automated_movement()
 	if(CheckMove())
 		return
-	if(isturf(loc) && !client) //just in case someone running an event takes over a shovelhead, we dont want to force them to use the AI
-		if(!in_frenzy)
-			bloodpool = 5
-			enter_frenzymod()
-		//we are wounded, heal ourselves if we can
-		if(prob(25) && (getBruteLoss() + getFireLoss() >= 60) && (bloodpool > 2))
-			blood_heal_action.Trigger()
-			visible_message(
-			span_warning("[src]'s wounds heal with unnatural speed!"),
-			span_warning("Your wounds visibly heal with unnatural speed!")
-			)
-		if(frenzy_target)
-			try_use_discipline(frenzy_target)
+	if(!isturf(loc))
+		return
+	if(client)
+		return
+	if(!in_frenzy)
+		bloodpool = 5
+		enter_frenzymod()
+	//we are wounded, heal ourselves if we can
+	if(prob(50) && (getBruteLoss() + getFireLoss() >= 60) && (bloodpool > 2))
+		blood_heal_action.Trigger()
+		visible_message(
+		span_warning("[src]'s wounds heal with unnatural speed!"),
+		span_warning("Your wounds visibly heal with unnatural speed!")
+		)
+	if(!frenzy_target)
+		return
+	if(prob(50))
+		try_use_discipline(frenzy_target)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
 	return

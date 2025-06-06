@@ -97,7 +97,12 @@
 		return TRUE
 
 /mob/living/carbon/proc/do_frenzy_bite(target)
-	if(frenzy_target?.bloodpool && (world.time > last_drinkblood_use + 180) && !frenzy_target.client)
+	if(frenzy_target.client)
+		return
+	if(!frenzy_target?.bloodpool)
+		return
+
+	if(COOLDOWN_FINISHED(src, frenzy_bite_cooldown))
 		frenzy_target.grabbedby(src)
 		if(ishuman(frenzy_target))
 			var/mob/living/carbon/human/humie = frenzy_target
@@ -110,7 +115,7 @@
 		frenzy_target.visible_message(span_warning("<b>[src] bites [frenzy_target]'s neck!</b>"), span_warning("<b>[src] bites your neck!</b></span>"))
 		face_atom(frenzy_target)
 		vamp.drinksomeblood(frenzy_target)
-		last_drinkblood_use = world.time //manually set this just in-case the sabbat moves and cancels its own animation. this prevents spammy bites
+		COOLDOWN_START(src, frenzy_bite_cooldown, rand(6 SECONDS, 12 SECONDS))
 
 /mob/living/carbon/proc/try_frenzy_bite(target)
 	frenzy_target = target
@@ -175,20 +180,13 @@
 
 /mob/living/carbon/proc/get_frenzy_targets()
 	var/list/targets = list()
-	if(iskindred(src))
-		for(var/mob/living/L in oviewers(7, src))
-			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat) && !istype(L, /mob/living/simple_animal/hostile))
-				if(L.bloodpool && L.stat != DEAD)
-					targets += L
-					if(L == frenzy_target)
-						return L
-	else
-		for(var/mob/living/L in oviewers(7, src))
-			if(!istype(L, /mob/living/carbon/human/npc/shop) && !istype(L, /mob/living/carbon/human/npc/sabbat) && !istype(L, /mob/living/simple_animal/hostile))
-				if(L.stat != DEAD)
-					targets += L
-					if(L == frenzy_target)
-						return L
+	for(var/mob/living/L in oviewers(7, src))
+		if(istype(L, /mob/living/carbon/human/npc/shop) || istype(L, /mob/living/carbon/human/npc/sabbat) || istype(L, /mob/living/simple_animal/hostile))
+			continue
+		if(L.stat == DEAD || HAS_TRAIT(L, TRAIT_DEATHCOMA))
+			continue
+		targets += L
+
 	if(length(targets) > 0)
 		if(frenzy_target)
 			if(get_dist(src, frenzy_target) > 7)
@@ -205,19 +203,17 @@
 /mob/living/carbon/proc/handle_automated_frenzy()
 	for(var/mob/living/carbon/human/npc/NPC in oviewers(5, src))
 		NPC.Aggro(src)
-	if(isturf(loc))
-		if(frenzy_target)
-			var/datum/cb = CALLBACK(src, PROC_REF(frenzystep))
-			var/reqsteps = SSfrenzypool.wait/total_multiplicative_slowdown()
-			for(var/i in 1 to reqsteps)
-				addtimer(cb, (i - 1)*total_multiplicative_slowdown())
-		else
-			frenzy_target = get_frenzy_targets()
-			if(!CheckFrenzyMove())
-				if(isturf(loc))
-					var/turf/T = get_step(loc, pick(NORTH, SOUTH, WEST, EAST))
-					face_atom(T)
-					Move(T)
+	if(frenzy_target)
+		var/datum/cb = CALLBACK(src, PROC_REF(frenzystep))
+		var/reqsteps = SSfrenzypool.wait/total_multiplicative_slowdown()
+		for(var/i in 1 to reqsteps)
+			addtimer(cb, (i - 1)*total_multiplicative_slowdown())
+	else
+		frenzy_target = get_frenzy_targets()
+		if(!CheckFrenzyMove())
+			var/turf/T = get_step(loc, pick(NORTH, SOUTH, WEST, EAST))
+			face_atom(T)
+			Move(T)
 
 /datum/species/kindred/spec_life(mob/living/carbon/human/H)
 	. = ..()
