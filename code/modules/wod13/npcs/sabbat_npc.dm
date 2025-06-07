@@ -64,7 +64,7 @@
 		update_inv_w_uniform()
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/death(gibbed)
-	..()
+	. = ..()
 	dust(TRUE)
 
 /mob/living/carbon/human/npc/sabbat/shovelhead/torpor(source)
