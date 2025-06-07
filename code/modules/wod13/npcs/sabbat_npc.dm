@@ -160,7 +160,7 @@ var/list/shovelhead_attack_phrases = list(
 		frenzy_target = target
 	else if(!target)
 		return
-	if(target && prob(50) && can_see(src, target, 7) && (bloodpool > 2))
+	if(can_see(src, target, 7) && (bloodpool > 2))
 		if(prob(50))
 			activated_action = pick(untargeted_disciplines)
 			if(activated_action)
@@ -190,9 +190,8 @@ var/list/shovelhead_attack_phrases = list(
 	if(!in_frenzy)
 		bloodpool = 5
 		enter_frenzymod()
-	//we are wounded, heal ourselves if we can
-	if(prob(50) && (getBruteLoss() + getFireLoss() >= 60) && (bloodpool > 2))
-		blood_heal_action.Trigger()
+	if(prob(75) && (getBruteLoss() + getFireLoss() >= 60) && (bloodpool > 2))
+		blood_heal_action.Trigger() //we are wounded, heal ourselves if we can
 		visible_message(
 		span_warning("[src]'s wounds heal with unnatural speed!"),
 		span_warning("Your wounds visibly heal with unnatural speed!")
@@ -211,10 +210,7 @@ var/list/shovelhead_attack_phrases = list(
 	..()
 	if(CheckMove())
 		return
-	if(!frenzy_target) //no opps, wander around
-		if(prob(15))
-			var/turf/T = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
-			face_atom(T)
-			step_to(src,T,0)
-		if(prob(1))
-			RealisticSay(pick(shovelhead_idle_phrases))
+	if(!frenzy_target)
+		return
+	if(prob(5))
+		RealisticSay(pick(shovelhead_idle_phrases))

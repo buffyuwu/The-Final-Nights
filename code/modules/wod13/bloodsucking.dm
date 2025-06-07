@@ -16,6 +16,8 @@
 		return 1
 
 /mob/living/carbon/human/proc/drinksomeblood(mob/living/mob)
+	if(!mob)
+		return
 	var/bloodgain = max(1, mob.bloodquality-1)
 	var/fumbled = FALSE
 	last_drinkblood_use = world.time
