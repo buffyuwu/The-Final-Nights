@@ -36,6 +36,8 @@
 	//dress them, name them
 	AssignSocialRole(pick(/datum/socialrole/usualmale, /datum/socialrole/usualfemale))
 
+	AddElement(/datum/element/point_of_interest)
+
 	//store actions to use later based on what we rolled for disciplines
 	for(var/datum/action/discipline/action in actions)
 		if(action.discipline.name == "Bloodheal")
