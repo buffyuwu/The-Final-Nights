@@ -152,7 +152,7 @@
 			try_frenzy_bite(frenzy_target)
 		if(!COOLDOWN_FINISHED(src, frenzy_attack_cooldown))
 			return
-		COOLDOWN_START(src, frenzy_attack_cooldown, rand(1 SECONDS, 3 SECONDS))
+		COOLDOWN_START(src, frenzy_attack_cooldown, 1 SECONDS)
 		UnarmedAttack(frenzy_target)
 	else
 		if(prob(50))
