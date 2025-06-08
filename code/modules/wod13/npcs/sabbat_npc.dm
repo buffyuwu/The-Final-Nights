@@ -204,6 +204,9 @@ var/list/shovelhead_attack_phrases = list(
 /mob/living/carbon/human/npc/sabbat/shovelhead/ChoosePath()
 	return
 
+/mob/living/carbon/human/npc/sabbat/shovelhead/canBeHandcuffed()
+	return FALSE
+
 /mob/living/carbon/human/npc/sabbat/shovelhead/Life()
 	if(stat == DEAD)
 		return
