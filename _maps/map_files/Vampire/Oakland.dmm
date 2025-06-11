@@ -590,7 +590,7 @@
 /area/vtm/interior/banu/haven)
 "apC" = (
 /obj/effect/decal/wallpaper/low,
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/museum)
 "apJ" = (
 /turf/open/floor/plating/vampocean,
@@ -607,13 +607,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/space)
-"apW" = (
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = 29;
-	pixel_y = 15
-	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
-/area/vtm/jazzclub)
 "aqb" = (
 /turf/closed/wall/vampwall/rock,
 /area/space)
@@ -2928,7 +2921,7 @@
 	id = "princeroom";
 	pixel_y = 15
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f4)
 "bAQ" = (
 /obj/structure/railing/metal{
@@ -5299,9 +5292,6 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
-"cPP" = (
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
-/area/vtm/interior/endron_facility/restricted)
 "cQk" = (
 /obj/effect/turf_decal/siding/white{
 	color = "#828282";
@@ -5328,7 +5318,7 @@
 /area/vtm/interior/glasswalker)
 "cRg" = (
 /obj/effect/decal/wallpaper/paper/darkgreen/low,
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/endron_facility/restricted)
 "cRv" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -5524,14 +5514,6 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower)
-"cVQ" = (
-/obj/effect/decal/wallpaper/light/low,
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/clinic)
-"cVR" = (
-/obj/effect/decal/wallpaper/light/low,
-/turf/closed/wall/vampwall/market/low/window/reinforced,
-/area/vtm/interior/police/upstairs)
 "cVS" = (
 /obj/structure/rack,
 /obj/item/bodybag,
@@ -5931,7 +5913,7 @@
 /turf/open/openspace,
 /area/vtm/interior/strip)
 "dhO" = (
-/turf/closed/wall/vampwall/market/low/window/reinforced,
+/turf/closed/wall/vampwall/market/low/window,
 /area/vtm/interior/police/upstairs)
 "dic" = (
 /obj/effect/turf_decal/siding/white{
@@ -6656,9 +6638,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/space)
-"dCg" = (
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/clinic)
 "dCh" = (
 /obj/machinery/light/small{
 	pixel_y = 32
@@ -6951,10 +6930,6 @@
 /obj/effect/decal/litter,
 /turf/open/floor/plating/vampdirt,
 /area/vtm/interior/ghetto)
-"dIz" = (
-/obj/effect/decal/wallpaper/light/low,
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/interior/shop)
 "dIP" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -7285,7 +7260,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/wallpaper/paper/darkgreen/low,
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/endron_facility/restricted)
 "dRH" = (
 /obj/effect/decal/wallpaper/paper/darkgreen/low,
@@ -8113,14 +8088,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower/f3)
-"etC" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1;
-	max_integrity = 100000
-	},
-/obj/effect/decal/wallpaper/paper/low,
-/turf/closed/wall/vampwall/city/low/window,
-/area/vtm/interior/laundromat)
 "etL" = (
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
 	id = "regentcurtain";
@@ -11144,9 +11111,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior)
-"gfg" = (
-/turf/closed/wall/vampwall/market/low/window/reinforced,
-/area/space)
 "gfy" = (
 /obj/structure/vampdoor/police{
 	lockpick_difficulty = 16
@@ -12993,7 +12957,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
 	id = "princeroom"
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f4)
 "hhV" = (
 /obj/effect/decal/bordur,
@@ -13028,7 +12992,7 @@
 /obj/structure/curtain/bounty{
 	pixel_y = 15
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f3)
 "hiu" = (
 /obj/structure/railing/metal{
@@ -14068,7 +14032,7 @@
 	id = 4523
 	},
 /obj/effect/decal/wallpaper/paper/darkgreen/low,
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/endron_facility/restricted)
 "hOt" = (
 /obj/machinery/mineral/equipment_vendor/fastfood/snacks{
@@ -14240,10 +14204,6 @@
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/interior/banu)
-"hSg" = (
-/obj/effect/decal/wallpaper/paper/rich/low,
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/interior/shop)
 "hSt" = (
 /obj/structure/railing/metal{
 	dir = 6
@@ -16340,9 +16300,6 @@
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/interior)
-"iXz" = (
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
-/area/vtm/interior/millennium_tower/f3)
 "iXD" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1;
@@ -19170,7 +19127,7 @@
 	},
 /area/vtm/interior/wyrm_corrupted)
 "kGF" = (
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f4)
 "kGZ" = (
 /obj/structure/bookcase/random/reference{
@@ -24080,7 +24037,7 @@
 	id = "princecurtain";
 	pixel_y = 15
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f4)
 "nrN" = (
 /obj/effect/decal/bordur{
@@ -26460,7 +26417,7 @@
 	pixel_y = 15;
 	id = 4523
 	},
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/endron_facility/restricted)
 "ozZ" = (
 /obj/structure/closet/crate/freezer/fridge,
@@ -26721,9 +26678,6 @@
 	pixel_y = 2;
 	pixel_x = -1
 	},
-/obj/structure/window/reinforced/indestructable{
-	alpha = 0
-	},
 /turf/open/floor/plating/woodfancy,
 /area/vtm/interior/shop)
 "oFz" = (
@@ -26837,7 +26791,7 @@
 /obj/structure/curtain/bounty{
 	pixel_y = 15
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f2)
 "oKt" = (
 /turf/open/floor/plating/vampplating/mono,
@@ -27180,7 +27134,7 @@
 	id = 29;
 	pixel_y = 6
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/jazzclub)
 "oSS" = (
 /obj/structure/table/wood/fancy/red,
@@ -28208,9 +28162,6 @@
 "pvg" = (
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/endron_facility)
-"pvM" = (
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/interior/shop)
 "pvT" = (
 /obj/item/reagent_containers/pill/happy{
 	pixel_x = 10;
@@ -29292,7 +29243,7 @@
 	id = 9285;
 	pixel_y = 15
 	},
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/old/low/window,
 /area/vtm/interior/endron_facility/restricted)
 "qbm" = (
 /obj/structure/chair/wood{
@@ -30408,9 +30359,6 @@
 /obj/item/food/donut/caramel{
 	pixel_y = 14;
 	pixel_x = 11
-	},
-/obj/structure/window/reinforced/indestructable{
-	alpha = 0
 	},
 /turf/open/floor/plating/woodfancy,
 /area/vtm/interior/shop)
@@ -32255,13 +32203,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/chinatown)
-"rGl" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4;
-	max_integrity = 1000000
-	},
-/turf/closed/wall/vampwall/market/low/window/reinforced,
-/area/vtm/interior/police)
 "rGp" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plating/toilet,
@@ -32833,9 +32774,6 @@
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/chinatown)
-"rXc" = (
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
-/area/vtm/interior/museum)
 "rXf" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/metal{
@@ -33132,9 +33070,6 @@
 /obj/item/food/donut/jelly/slimejelly/caramel{
 	pixel_y = 3;
 	pixel_x = 6
-	},
-/obj/structure/window/reinforced/indestructable{
-	alpha = 0
 	},
 /turf/open/floor/plating/woodfancy,
 /area/vtm/interior/shop)
@@ -34115,13 +34050,6 @@
 /obj/structure/werewolf_totem/spiral,
 /turf/open/indestructible/necropolis/air,
 /area/vtm/interior/wyrm_corrupted)
-"sGz" = (
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = 2478;
-	pixel_y = 15
-	},
-/turf/closed/wall/vampwall/rich/old/low/window/reinforced,
-/area/vtm/interior/endron_facility/restricted)
 "sHy" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "floor5-old"
@@ -36237,7 +36165,7 @@
 /turf/open/floor/plating/bacotell,
 /area/vtm/interior/shop)
 "tPL" = (
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
+/turf/closed/wall/vampwall/painted/low/window,
 /area/vtm/interior/bianchiBank)
 "tQk" = (
 /obj/structure/foodrack{
@@ -38146,7 +38074,7 @@
 /area/vtm/interior/police)
 "uWf" = (
 /obj/effect/decal/wallpaper/gold/low,
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
+/turf/closed/wall/vampwall/painted/low/window,
 /area/vtm/interior/bianchiBank)
 "uWg" = (
 /obj/structure/table/wood,
@@ -39069,9 +38997,6 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating/concrete,
 /area/space)
-"vzg" = (
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
-/area/vtm/interior/banu/haven)
 "vzE" = (
 /obj/structure/roofstuff/alt2{
 	layer = 2.8
@@ -41372,7 +41297,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
 	id = "princecurtain"
 	},
-/turf/closed/wall/vampwall/rich/low/window/reinforced,
+/turf/closed/wall/vampwall/rich/low/window,
 /area/vtm/interior/millennium_tower/f4)
 "wPr" = (
 /obj/item/kirbyplants/random,
@@ -41473,9 +41398,6 @@
 /obj/effect/decal/trash,
 /turf/open/floor/plating/vampdirt,
 /area/vtm/interior/ghetto)
-"wRO" = (
-/turf/closed/wall/vampwall/market/low/window/reinforced,
-/area/vtm/interior/police)
 "wSv" = (
 /obj/structure/tank_holder/extinguisher{
 	pixel_x = -7
@@ -42089,7 +42011,7 @@
 	pixel_y = 8
 	},
 /obj/effect/decal/wallpaper/gold/low,
-/turf/closed/wall/vampwall/painted/low/window/reinforced,
+/turf/closed/wall/vampwall/painted/low/window,
 /area/vtm/interior/bianchiBank)
 "xhO" = (
 /obj/structure/chair/wood{
@@ -63041,15 +62963,15 @@ jAT
 jAT
 jAT
 jAT
-gfg
+wAq
 jAT
-gfg
+wAq
 jAT
-gfg
+wAq
 jAT
-gfg
+wAq
 jAT
-gfg
+wAq
 jAT
 jAT
 wel
@@ -100815,9 +100737,9 @@ dmN
 evC
 kEa
 wEL
-rGl
-rGl
-rGl
+mgr
+mgr
+mgr
 dmN
 fII
 fII
@@ -103430,7 +103352,7 @@ tys
 tys
 wEL
 wEL
-wRO
+mgr
 wEL
 oRn
 sNt
@@ -103438,15 +103360,15 @@ sNt
 sNt
 wEL
 wEL
-wRO
+mgr
 wEL
 wEL
 wEL
-wRO
-wRO
+mgr
+mgr
 wEL
-wRO
-wRO
+mgr
+mgr
 wEL
 wEL
 wEL
@@ -103636,7 +103558,7 @@ tys
 tys
 wEL
 wEL
-wRO
+mgr
 wEL
 wEL
 tys
@@ -110652,7 +110574,7 @@ seF
 seF
 xUq
 pId
-etC
+gOG
 bXK
 bXK
 fmD
@@ -115387,7 +115309,7 @@ jdm
 vbW
 yit
 yit
-rXc
+qQg
 duv
 uOr
 iMR
@@ -115589,7 +115511,7 @@ jdm
 tKq
 yit
 yit
-rXc
+qQg
 sLo
 meA
 iMR
@@ -115791,7 +115713,7 @@ jdm
 mHe
 yit
 yit
-rXc
+qQg
 xAE
 xAE
 iMR
@@ -119541,7 +119463,7 @@ ubX
 gmf
 ims
 wrZ
-dIz
+pMa
 hCX
 hCX
 atw
@@ -119731,7 +119653,7 @@ xQB
 syZ
 xQB
 xQB
-hSg
+iIT
 lUr
 lUr
 pdy
@@ -119743,7 +119665,7 @@ lUr
 pMa
 niw
 hCX
-dIz
+pMa
 hCX
 eXw
 iGn
@@ -119929,10 +119851,10 @@ jdO
 ueA
 xma
 rcJ
-pvM
+xkm
 hPL
-pvM
-pvM
+xkm
+xkm
 wOw
 cZB
 lUr
@@ -120147,7 +120069,7 @@ lUr
 khy
 hCX
 hCX
-dIz
+pMa
 hCX
 hCX
 hCX
@@ -140802,7 +140724,7 @@ aYL
 aYL
 aYL
 aYL
-cVR
+ddF
 pGo
 edZ
 cRA
@@ -141004,7 +140926,7 @@ aYL
 aYL
 aYL
 aYL
-cVR
+ddF
 mEy
 hmf
 cRA
@@ -141206,7 +141128,7 @@ aYL
 aYL
 aYL
 aYL
-cVR
+ddF
 ycl
 syV
 cRA
@@ -150587,10 +150509,10 @@ tys
 dEu
 dEu
 dEu
-vzg
-vzg
-vzg
-vzg
+sFj
+sFj
+sFj
+sFj
 dEu
 dEu
 tys
@@ -154982,9 +154904,9 @@ oKF
 hSt
 xoV
 jmj
-rXc
-rXc
-rXc
+qQg
+qQg
+qQg
 jmj
 jmj
 jdm
@@ -155827,8 +155749,8 @@ tys
 tys
 joX
 joX
-dCg
-dCg
+bEV
+bEV
 nBC
 myj
 joX
@@ -155991,11 +155913,11 @@ gBp
 uAK
 uAK
 jmj
-rXc
-rXc
+qQg
+qQg
 jmj
-rXc
-rXc
+qQg
+qQg
 jdm
 uAK
 uAK
@@ -157581,9 +157503,9 @@ ozN
 yjk
 yjk
 yjk
-sGz
-sGz
-sGz
+oVE
+oVE
+oVE
 yjk
 yjk
 yjk
@@ -159049,7 +158971,7 @@ kaD
 udm
 eag
 wWU
-cVQ
+aNU
 sGc
 mPT
 mJv
@@ -159251,7 +159173,7 @@ mPT
 udm
 xgM
 wCI
-cVQ
+aNU
 tQY
 kaD
 mJv
@@ -161423,9 +161345,9 @@ ucp
 ucp
 ucp
 ucp
-apW
-apW
-apW
+mTs
+mTs
+mTs
 ucp
 ucp
 ucp
@@ -190114,7 +190036,7 @@ vPp
 nCe
 mjs
 tQu
-iXz
+qUg
 tys
 tys
 tys
@@ -190316,7 +190238,7 @@ kSS
 nCe
 kmU
 aIs
-iXz
+qUg
 tys
 tys
 tys
@@ -190518,7 +190440,7 @@ fUd
 fVI
 kmU
 aIs
-iXz
+qUg
 tys
 tys
 tys
@@ -194546,11 +194468,11 @@ yjk
 yjk
 yjk
 yjk
-cPP
-cPP
-cPP
-cPP
-cPP
+jda
+jda
+jda
+jda
+jda
 yjk
 yjk
 tys
@@ -194956,7 +194878,7 @@ sYt
 sVs
 sJZ
 jha
-cPP
+jda
 tys
 tys
 tys
@@ -195158,7 +195080,7 @@ tOy
 rAj
 sJZ
 jha
-cPP
+jda
 tys
 tys
 tys
@@ -195360,7 +195282,7 @@ uCG
 nwf
 sJZ
 jha
-cPP
+jda
 tys
 tys
 tys
@@ -195562,7 +195484,7 @@ qdU
 fpY
 sJZ
 jha
-cPP
+jda
 tys
 tys
 tys
