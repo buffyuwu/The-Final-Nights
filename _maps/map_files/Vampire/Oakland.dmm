@@ -743,7 +743,7 @@
 /turf/open/floor/plating/rough,
 /area/space)
 "aqn" = (
-/obj/structure/chair/office,
+/obj/structure/chair/office/blue,
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "aqu" = (
@@ -2418,7 +2418,7 @@
 /turf/open/floor/plating/vampwood,
 /area/space)
 "bem" = (
-/obj/structure/chair/greyscale,
+/obj/structure/chair/green,
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior)
 "beo" = (
@@ -3109,7 +3109,7 @@
 /turf/open/floor/plating/vampcanal,
 /area/vtm/sewer)
 "bwo" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 1
 	},
 /turf/open/floor/plating/circled,
@@ -3397,6 +3397,7 @@
 	pixel_y = 7;
 	pixel_x = 10
 	},
+/obj/item/folder/blue,
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "bAs" = (
@@ -5108,7 +5109,9 @@
 /obj/flag/california{
 	pixel_y = 28
 	},
-/obj/item/folder/blue,
+/obj/vampire_computer{
+	pixel_y = 4
+	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "coh" = (
@@ -5943,7 +5946,7 @@
 /obj/structure/railing/metal{
 	dir = 4
 	},
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -8801,7 +8804,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/strip)
 "edZ" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 8
 	},
 /obj/effect/decal/trash{
@@ -10352,7 +10355,7 @@
 /turf/open/floor/plating/parquetry,
 /area/vtm/jazzclub)
 "eMS" = (
-/obj/structure/chair{
+/obj/structure/chair/green{
 	dir = 4
 	},
 /turf/open/floor/plating/toilet,
@@ -11112,7 +11115,7 @@
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/banu/haven)
 "fcJ" = (
-/obj/structure/chair/office,
+/obj/structure/chair/office/blue,
 /turf/open/floor/plating/circled,
 /area/vtm/clinic)
 "fcM" = (
@@ -12196,6 +12199,7 @@
 	pixel_y = 12;
 	pixel_x = -9
 	},
+/obj/item/folder/blue,
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "fEh" = (
@@ -13147,7 +13151,7 @@
 /turf/open/floor/plating/parquetry,
 /area/vtm/clinic)
 "fZC" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 8
 	},
 /turf/open/floor/plating/parquetry,
@@ -14572,7 +14576,7 @@
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "gLD" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 1
 	},
 /turf/open/floor/plating/parquetry,
@@ -14993,7 +14997,7 @@
 /turf/open/floor/plating/vampplating,
 /area/vtm/interior/techshop)
 "gVW" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -19065,7 +19069,7 @@
 /turf/open/floor/plating/vampcanalplating,
 /area/vtm/sewer)
 "iKK" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 1
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -21190,7 +21194,7 @@
 /turf/open/floor/plating/circled,
 /area/vtm/interior/shop)
 "jQZ" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /turf/open/floor/plating/parquetry,
@@ -27745,7 +27749,9 @@
 	pixel_y = 13;
 	pixel_x = 9
 	},
-/obj/item/folder/blue,
+/obj/vampire_computer{
+	pixel_y = 4
+	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "mLP" = (
@@ -30728,7 +30734,7 @@
 	},
 /area/vtm/interior/ghetto)
 "obZ" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -30905,7 +30911,7 @@
 /turf/open/floor/plating/vampgrass,
 /area/space)
 "oeT" = (
-/obj/structure/chair/greyscale{
+/obj/structure/chair/green{
 	dir = 4
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -34133,7 +34139,7 @@
 /turf/open/floor/plating/vampcarpet,
 /area/vtm/interior/police/upstairs)
 "pyb" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 8
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -34171,7 +34177,7 @@
 /turf/open/floor/carpet/red,
 /area/space)
 "pyZ" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /mob/living/carbon/human/npc/police/static,
@@ -35107,6 +35113,7 @@
 	pixel_y = 15;
 	pixel_x = -9
 	},
+/obj/vampire_computer,
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/police)
 "pVZ" = (
@@ -35581,7 +35588,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/bianchiBank)
 "qgx" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -36504,7 +36511,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/hotel)
 "qzs" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /mob/living/carbon/human/npc/police/static,
@@ -39535,7 +39542,7 @@
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/wyrm_corrupted)
 "rSn" = (
-/obj/structure/chair/office,
+/obj/structure/chair/office/blue,
 /turf/open/floor/plating/parquetry,
 /area/vtm/clinic)
 "rSv" = (
@@ -40957,7 +40964,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/millennium_tower/f4)
 "syV" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 1
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -41274,7 +41281,7 @@
 /turf/open/floor/plating/toilet,
 /area/vtm/interior/police/upstairs)
 "sGc" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 4
 	},
 /turf/open/floor/plating/vampplating/mono,
@@ -45435,7 +45442,7 @@
 /turf/open/floor/plating/vampplating/mono,
 /area/vtm/interior/endron_facility)
 "uDj" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 8
 	},
 /turf/open/floor/plating/parquetry/old,
@@ -50416,7 +50423,7 @@
 /turf/open/floor/carpet/black,
 /area/vtm/interior)
 "wVI" = (
-/obj/structure/chair/office{
+/obj/structure/chair/office/blue{
 	dir = 8
 	},
 /turf/open/floor/plating/circled,
