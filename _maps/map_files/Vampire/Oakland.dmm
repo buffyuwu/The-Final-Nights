@@ -1505,12 +1505,6 @@
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/interior/millennium_tower)
-"aHR" = (
-/obj/effect/decal/bordur/corner{
-	dir = 4
-	},
-/turf/open/openspace,
-/area/space)
 "aIn" = (
 /obj/structure/fluff/hedge,
 /obj/effect/turf_decal/siding/white{
@@ -112800,8 +112794,8 @@ tys
 tys
 tys
 tys
-aHR
-aHR
+tys
+tys
 tys
 tys
 tys
@@ -113002,7 +112996,7 @@ tys
 tys
 tys
 tys
-aHR
+tys
 tys
 tys
 tys
