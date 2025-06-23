@@ -263,6 +263,9 @@
 /area/vtm/fishermanswharf/lower
 	name = "Fisherman's Wharf - Lower Beachside"
 
+/area/vtm/fishermanswharf/industrial
+	name = "Fisherman's Wharf - Industrial District"
+
 /area/vtm/northbeach
 	name = "Beach"
 	icon_state = "northbeach"
@@ -388,6 +391,24 @@
 	name = "Hotel"
 	icon_state = "hotel"
 	music = /datum/vampiremusic/bar
+	ambience_index = AMBIENCE_INTERIOR
+	upper = FALSE
+	fire_controled = TRUE
+	wall_rating = HIGH_WALL_RATING
+
+/area/vtm/cabdepot
+	name = "Cab Depot"
+	icon_state = "hotel"
+	music = /datum/vampiremusic/downtown
+	ambience_index = AMBIENCE_INTERIOR
+	upper = FALSE
+	fire_controled = TRUE
+	wall_rating = HIGH_WALL_RATING
+
+/area/vtm/substation
+	name = "Grid Substation"
+	icon_state = "hotel"
+	music = /datum/vampiremusic/downtown
 	ambience_index = AMBIENCE_INTERIOR
 	upper = FALSE
 	fire_controled = TRUE
@@ -543,6 +564,16 @@
 	yin_chi = 0
 	wall_rating = LOW_WALL_RATING	//for werewolves in future
 
+/area/vtm/forest/caves
+	name = "Forest Caverns"
+	icon_state = "park"
+	upper = TRUE
+	zone_type = "battle"
+	music = /datum/vampiremusic/forest
+	yang_chi = 2
+	yin_chi = 0
+	wall_rating = LOW_WALL_RATING
+
 /area/vtm/interior/glasswalker
 	name = "Glasswalker's Lab"
 	icon_state = "supply"
@@ -576,6 +607,16 @@
 	name = "Endron Forest Worksite"
 	icon_state = "supply"
 	zone_type = "battle"
+	music = /datum/vampiremusic/forest
+	fire_controled = TRUE
+	yang_chi = 0
+	yin_chi = 1
+	wall_rating = LOW_WALL_RATING
+
+/area/vtm/interior/endron_facility/plant
+	name = "Endron Processing Plant"
+	icon_state = "supply"
+	zone_type = "masquerade"
 	music = /datum/vampiremusic/forest
 	fire_controled = TRUE
 	yang_chi = 0
