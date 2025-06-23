@@ -56,6 +56,20 @@
 	fire_controled = TRUE
 	wall_rating = LOW_WALL_RATING
 
+/area/vtm/interior/littleitaly
+	name = "Little Italy - Store"
+	icon_state = "shop"
+	upper = FALSE
+	fire_controled = TRUE
+	wall_rating = LOW_WALL_RATING
+
+/area/vtm/interior/littleitaly/apartments
+	name = "Little Italy - Apartments"
+	icon_state = "shop"
+	upper = FALSE
+	fire_controled = TRUE
+	wall_rating = LOW_WALL_RATING
+
 /area/vtm/interior/giovanni
 	name = "Giovanni Mansion"
 	icon_state = "giovanni"
@@ -224,6 +238,9 @@
 /area/vtm/pacificheights/community
 	name = "Pacific Heights - Community Road"
 
+/area/vtm/pacificheights/industrial
+	name = "Pacific Heights - Industrial District"
+
 /area/vtm/chinatown
 	name = "Chinatown"
 	icon_state = "chinatown"
@@ -248,6 +265,14 @@
 
 /area/vtm/northbeach
 	name = "Beach"
+	icon_state = "northbeach"
+	ambience_index = AMBIENCE_BEACH
+	music = /datum/vampiremusic/santamonica
+	upper = TRUE
+	wall_rating = HIGH_WALL_RATING
+
+/area/vtm/baywalk
+	name = "Baywalk District"
 	icon_state = "northbeach"
 	ambience_index = AMBIENCE_BEACH
 	music = /datum/vampiremusic/santamonica
@@ -437,6 +462,17 @@
 
 /area/vtm/sewer
 	name = "Sewer"
+	icon_state = "sewer"
+	ambience_index = AMBIENCE_SEWER
+	music = /datum/vampiremusic/sewer
+	upper = FALSE
+	zone_type = "battle"
+	yang_chi = 0
+	yin_chi = 2
+	wall_rating = HIGH_WALL_RATING
+
+/area/vtm/sewer/police
+	name = "Police Station - Basement"
 	icon_state = "sewer"
 	ambience_index = AMBIENCE_SEWER
 	music = /datum/vampiremusic/sewer
