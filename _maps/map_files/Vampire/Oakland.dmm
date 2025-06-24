@@ -1827,7 +1827,7 @@
 /obj/structure/stairs/north{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/chantry)
 "aHa" = (
 /obj/structure/closet/crate/large{
@@ -15764,6 +15764,10 @@
 	color = "#802d29";
 	dir = 4
 	},
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_x = -16
+	},
 /turf/open/floor/plating/woodfancy,
 /area/vtm/interior/shop)
 "fSo" = (
@@ -18683,7 +18687,7 @@
 /obj/structure/stairs/north{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/chantry)
 "gXJ" = (
 /obj/effect/decal/pallet,
@@ -24357,6 +24361,9 @@
 /obj/structure/chair/comfy/brown{
 	color = "#50C878";
 	dir = 8
+	},
+/obj/machinery/light/small{
+	pixel_y = 32
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/interior)
@@ -33104,7 +33111,7 @@
 /obj/structure/stairs/north{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/plating/parquetry/old,
 /area/vtm/interior/chantry)
 "mmf" = (
 /obj/matrix,
@@ -34456,6 +34463,16 @@
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/supply)
+"mIQ" = (
+/obj/effect/turf_decal/siding/wideplating{
+	color = "#004136";
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/parquetry/old,
+/area/vtm/interior)
 "mIV" = (
 /obj/structure/table/wood,
 /obj/item/kirbyplants{
@@ -35450,7 +35467,7 @@
 /turf/open/floor/plating/circled,
 /area/vtm/interior/wyrm_corrupted)
 "naG" = (
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/vtm/interior/cog/pantry)
 "naU" = (
 /obj/effect/decal/pallet,
@@ -53981,6 +53998,9 @@
 /area/vtm/interior/police)
 "tLr" = (
 /obj/structure/table/wood,
+/obj/machinery/light/small{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
 "tLt" = (
@@ -58288,6 +58308,12 @@
 	color = "#635d52"
 	},
 /area/vtm)
+"vuG" = (
+/obj/machinery/light/small{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/parquetry/old,
+/area/vtm/interior)
 "vuM" = (
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/hotel)
@@ -62267,6 +62293,9 @@
 	dir = 8;
 	color = "#574d46"
 	},
+/obj/machinery/light/small{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior)
 "wVF" = (
@@ -63733,6 +63762,9 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/plating/vampgrass,
 /area/vtm)
+"xzh" = (
+/turf/closed/wall/vampwall/brick/low,
+/area/vtm/interior/littleitaly)
 "xzo" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/plating/dirt,
@@ -138591,7 +138623,7 @@ gnp
 gnp
 bcB
 gnp
-gnp
+sZR
 cBl
 hYS
 xli
@@ -138793,7 +138825,7 @@ gre
 mWO
 mWO
 yfB
-gnp
+sZR
 mnm
 crF
 bzi
@@ -139457,8 +139489,8 @@ hZF
 qXn
 hVd
 eHH
-eHH
-eHH
+xzh
+xzh
 pVG
 pTm
 eHH
@@ -144865,7 +144897,7 @@ tJk
 okP
 qwL
 okP
-cdW
+mIQ
 bMY
 mzM
 bMY
@@ -185466,7 +185498,7 @@ jhI
 wVB
 gqU
 jhI
-baE
+vuG
 baE
 baE
 mBV
