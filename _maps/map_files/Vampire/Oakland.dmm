@@ -426,7 +426,9 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 10
 	},
-/turf/open/floor/plating/bloodshit,
+/turf/open/floor/plating/shit{
+	icon_state = "blood"
+	},
 /area/vtm/interior/giovanni/basement)
 "ahD" = (
 /obj/structure/rack/bubway/north,
@@ -3759,7 +3761,9 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
-/turf/open/floor/plating/bloodshit,
+/turf/open/floor/plating/shit{
+	icon_state = "blood"
+	},
 /area/vtm/interior/giovanni/basement)
 "buI" = (
 /obj/effect/turf_decal/weather/dirt{
@@ -18254,7 +18258,9 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 5
 	},
-/turf/open/floor/plating/bloodshit,
+/turf/open/floor/plating/shit{
+	icon_state = "blood"
+	},
 /area/vtm/interior/giovanni/basement)
 "gPL" = (
 /obj/machinery/photocopier,
