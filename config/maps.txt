@@ -18,6 +18,10 @@ map kindredcity
 	default
 endmap
 
+map oakland
+	votable
+endmap
+
 map runtimetown
 endmap
 
