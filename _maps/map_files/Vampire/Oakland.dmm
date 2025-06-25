@@ -4586,7 +4586,8 @@
 "bDb" = (
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	dir = 8
+	dir = 8;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -7004,7 +7005,8 @@
 /obj/structure/vampdoor/glass{
 	dir = 4;
 	icon_state = "glass-1";
-	lock_id = "giovanni"
+	lock_id = "giovanni";
+	baseicon = "glass-1"
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/littleitaly)
@@ -7741,7 +7743,8 @@
 	dir = 1
 	},
 /obj/structure/vampdoor/camarilla{
-	icon_state = "wood-1"
+	icon_state = "wood-1";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower/f2)
@@ -10938,7 +10941,8 @@
 	color = "#636363"
 	},
 /obj/structure/vampdoor/camarilla{
-	icon_state = "wood-1"
+	icon_state = "wood-1";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/interior/millennium_tower)
@@ -13227,9 +13231,8 @@
 	dir = 8;
 	color = "#574d46"
 	},
-/obj/structure/vampdoor{
-	dir = 4;
-	icon_state = "cam-1"
+/obj/structure/vampdoor/simple{
+	dir = 8
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/interior)
@@ -14581,7 +14584,8 @@
 /obj/structure/vampdoor/glass{
 	dir = 4;
 	icon_state = "glass-1";
-	lock_id = "giovanni"
+	lock_id = "giovanni";
+	baseicon = "glass-1"
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/littleitaly)
@@ -25297,7 +25301,8 @@
 "iGE" = (
 /obj/structure/vampdoor/glass/clerk{
 	dir = 4;
-	icon_state = "glass-1"
+	icon_state = "glass-1";
+	baseicon = "glass-1"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower)
@@ -26414,7 +26419,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	lockpick_difficulty = 16;
-	lock_id = "bar"
+	lock_id = "bar";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -27562,7 +27568,8 @@
 "jvv" = (
 /obj/structure/vampdoor/camarilla{
 	dir = 4;
-	icon_state = "wood-1"
+	icon_state = "wood-1";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/toilet,
 /area/vtm/interior/millennium_tower)
@@ -27856,7 +27863,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	dir = 1;
-	lockpick_difficulty = 13
+	lockpick_difficulty = 13;
+	baseicon = "wood-1"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1;
@@ -30045,7 +30053,8 @@
 /obj/structure/vampdoor/glass{
 	dir = 4;
 	icon_state = "glass-1";
-	lock_id = "giovanni"
+	lock_id = "giovanni";
+	baseicon = "glass-1"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8;
@@ -30379,7 +30388,8 @@
 /area/vtm)
 "kud" = (
 /obj/structure/vampdoor/glass/clerk{
-	icon_state = "glass-1"
+	icon_state = "glass-1";
+	baseicon = "glass-1"
 	},
 /obj/effect/vip_barrier/elysium,
 /turf/open/floor/mineral/plastitanium,
@@ -30858,7 +30868,8 @@
 /obj/structure/vampdoor/camarilla{
 	icon_state = "wood-1";
 	dir = 8;
-	lockpick_difficulty = 11
+	lockpick_difficulty = 11;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower/f3)
@@ -31248,7 +31259,8 @@
 /obj/structure/vampdoor/glass{
 	dir = 4;
 	icon_state = "glass-1";
-	lock_id = "giovanni"
+	lock_id = "giovanni";
+	baseicon = "glass-1"
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/littleitaly)
@@ -32297,7 +32309,8 @@
 "ldo" = (
 /obj/structure/vampdoor/camarilla{
 	icon_state = "wood-1";
-	dir = 4
+	dir = 4;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/millennium_tower)
@@ -32995,7 +33008,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	locked = 0;
-	dir = 4
+	dir = 4;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/toilet{
 	color = "#636363"
@@ -35199,7 +35213,8 @@
 	},
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	locked = 0
+	locked = 0;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -35278,7 +35293,8 @@
 	},
 /obj/structure/vampdoor/camarilla{
 	icon_state = "wood-1";
-	dir = 4
+	dir = 4;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f2)
@@ -39465,7 +39481,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	dir = 1;
-	lockpick_difficulty = 13
+	lockpick_difficulty = 13;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -41433,7 +41450,8 @@
 	icon_state = "wood-1";
 	dir = 8;
 	lockpick_difficulty = 16;
-	lock_id = "bar"
+	lock_id = "bar";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -42672,7 +42690,8 @@
 "otQ" = (
 /obj/structure/vampdoor/glass/clerk{
 	dir = 4;
-	icon_state = "glass-1"
+	icon_state = "glass-1";
+	baseicon = "glass-1"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 8;
@@ -43769,7 +43788,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	dir = 1;
-	lockpick_difficulty = 13
+	lockpick_difficulty = 13;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -44366,7 +44386,8 @@
 	},
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	dir = 8
+	dir = 8;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -44466,7 +44487,8 @@
 	icon_state = "glass-1";
 	lock_id = "anarch";
 	locked = 1;
-	lockpick_difficulty = 10
+	lockpick_difficulty = 10;
+	baseicon = "glass-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -46012,7 +46034,8 @@
 "pxI" = (
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	dir = 8
+	dir = 8;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/anarch/basement)
@@ -50392,7 +50415,8 @@
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
 	locked = 0;
-	dir = 4
+	dir = 4;
+	baseicon = "wood-1"
 	},
 /obj/effect/turf_decal/siding/wideplating/dark{
 	dir = 4
@@ -50422,7 +50446,8 @@
 /obj/structure/vampdoor/glass{
 	dir = 1;
 	icon_state = "glass-1";
-	lock_id = "anarch"
+	lock_id = "anarch";
+	baseicon = "glass-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -54632,9 +54657,7 @@
 	dir = 1
 	},
 /obj/effect/decal/bordur,
-/obj/structure/vampdoor{
-	icon_state = "cam-1"
-	},
+/obj/structure/vampdoor/simple,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior)
 "stc" = (
@@ -57043,7 +57066,8 @@
 	},
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	dir = 8
+	dir = 8;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -57769,9 +57793,6 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/techshop)
-"tys" = (
-/turf/open/openspace,
-/area/space)
 "tyD" = (
 /obj/structure/table,
 /obj/item/vamp/keys/strip,
@@ -60724,7 +60745,8 @@
 	},
 /obj/structure/vampdoor/anarch{
 	icon_state = "wood-1";
-	locked = 0
+	locked = 0;
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -61622,7 +61644,8 @@
 	dir = 4;
 	icon_state = "glass-1";
 	lockpick_difficulty = 8;
-	locked = 0
+	locked = 0;
+	baseicon = "glass-1"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower)
@@ -63343,7 +63366,8 @@
 	dir = 2
 	},
 /obj/structure/vampdoor/camarilla{
-	icon_state = "wood-1"
+	icon_state = "wood-1";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower/f4)
@@ -65915,7 +65939,9 @@
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
 "wrT" = (
-/obj/fusebox/transformer,
+/obj/fusebox/transformer{
+	layer = 4.6
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/chantry)
 "wrZ" = (
@@ -67803,7 +67829,8 @@
 /area/vtm/graveyard/interior)
 "wXx" = (
 /obj/structure/vampdoor/anarch{
-	icon_state = "wood-1"
+	icon_state = "wood-1";
+	baseicon = "wood-1"
 	},
 /turf/open/floor/plating/parquetry/old,
 /area/vtm/anarch/basement)
@@ -127663,8 +127690,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 ycd
 ycd
 ycd
@@ -127865,12 +127892,12 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
+tao
+tao
+tao
+tao
+tao
+tao
 iXN
 "}
 (80,1,2) = {"
@@ -128067,12 +128094,12 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
+tao
+tao
+tao
+tao
+tao
+tao
 iXN
 "}
 (81,1,2) = {"
@@ -128273,8 +128300,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (82,1,2) = {"
@@ -128475,8 +128502,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (83,1,2) = {"
@@ -128677,8 +128704,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (84,1,2) = {"
@@ -128879,8 +128906,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (85,1,2) = {"
@@ -129081,8 +129108,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (86,1,2) = {"
@@ -129283,8 +129310,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (87,1,2) = {"
@@ -129485,8 +129512,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (88,1,2) = {"
@@ -129687,8 +129714,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (89,1,2) = {"
@@ -129889,8 +129916,8 @@ oMH
 oMH
 oMH
 oMH
-oMH
-oMH
+tao
+tao
 iXN
 "}
 (90,1,2) = {"
@@ -130079,20 +130106,20 @@ mQl
 mQl
 pRy
 tao
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
+tao
 iXN
 "}
 (91,1,2) = {"
@@ -130281,20 +130308,20 @@ jAE
 jAE
 jAE
 jAE
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
-oMH
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
+jAE
 iXN
 "}
 (92,1,2) = {"
@@ -203495,7 +203522,7 @@ wUD
 wUD
 ulI
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -203696,8 +203723,8 @@ mjT
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 ulI
 wUD
@@ -203899,8 +203926,8 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -204102,7 +204129,7 @@ fJj
 wUD
 wUD
 wUD
-wUD
+uvs
 fJj
 wUD
 wUD
@@ -204304,8 +204331,8 @@ wUD
 wUD
 wUD
 ulI
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -204506,7 +204533,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -205316,7 +205343,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 fJj
 wUD
@@ -205344,7 +205371,7 @@ mjT
 fJj
 wUD
 ulI
-wUD
+uvs
 fJj
 wUD
 wUD
@@ -205518,8 +205545,8 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -205546,8 +205573,8 @@ mjT
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -205720,7 +205747,7 @@ fJj
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -205749,7 +205776,7 @@ wUD
 fJj
 wUD
 wUD
-wUD
+uvs
 wUD
 ulI
 wUD
@@ -205921,38 +205948,38 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
-wUD
-ulI
-wUD
-wUD
-wUD
-wUD
-wUD
-wUD
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-mjT
-wUD
-wUD
+uvs
+uvs
 wUD
 ulI
 wUD
 wUD
+wUD
+wUD
+wUD
+wUD
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+mjT
+wUD
+wUD
+wUD
+ulI
+uvs
+uvs
 wUD
 wUD
 ulI
@@ -206124,7 +206151,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -206154,7 +206181,7 @@ mjT
 wUD
 wUD
 wUD
-wUD
+uvs
 fJj
 wUD
 wUD
@@ -206326,8 +206353,8 @@ wUD
 wUD
 wUD
 ulI
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -206529,8 +206556,8 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -206732,7 +206759,7 @@ wUD
 wUD
 fJj
 wUD
-wUD
+uvs
 wUD
 ulI
 wUD
@@ -206933,8 +206960,8 @@ xEp
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -207136,7 +207163,7 @@ xEp
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -208552,7 +208579,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -208754,8 +208781,8 @@ fJj
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -208955,8 +208982,8 @@ wUD
 wUD
 wUD
 ulI
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 ulI
@@ -209158,7 +209185,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -209359,8 +209386,8 @@ ulI
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 fJj
 wUD
 wUD
@@ -209560,8 +209587,8 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -209763,7 +209790,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -210166,7 +210193,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -210368,8 +210395,8 @@ wUD
 wUD
 wUD
 wUD
-wUD
-wUD
+uvs
+uvs
 wUD
 fJj
 wUD
@@ -210568,9 +210595,9 @@ wUD
 ulI
 wUD
 wUD
-wUD
-wUD
-wUD
+uvs
+uvs
+uvs
 wUD
 wUD
 wUD
@@ -210771,7 +210798,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -210972,8 +210999,8 @@ wUD
 wUD
 wUD
 fJj
-wUD
-wUD
+uvs
+uvs
 wUD
 ulI
 wUD
@@ -211175,7 +211202,7 @@ wUD
 wUD
 wUD
 wUD
-wUD
+uvs
 wUD
 wUD
 wUD
@@ -256458,7 +256485,7 @@ ufM
 nrL
 nrL
 ufM
-tys
+fwq
 xmC
 ufM
 kGF
@@ -256468,7 +256495,7 @@ ufM
 bAH
 ufM
 ufM
-tys
+fwq
 fwq
 fwq
 fwq
@@ -256670,7 +256697,7 @@ xeh
 jfP
 gTo
 ufM
-tys
+fwq
 fwq
 fwq
 fwq
@@ -260508,7 +260535,7 @@ nkq
 nkq
 nkq
 nkq
-tys
+fwq
 fwq
 fwq
 fwq
