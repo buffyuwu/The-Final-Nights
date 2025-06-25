@@ -1331,6 +1331,13 @@
 	},
 /turf/open/floor/plating/vampdirt,
 /area/vtm/interior/shop)
+"axh" = (
+/obj/effect/turf_decal/siding/wideplating{
+	color = "#5a2355";
+	dir = 6
+	},
+/turf/open/floor/carpet/purple,
+/area/vtm)
 "axl" = (
 /obj/structure/table,
 /obj/machinery/mineral/equipment_vendor/fastfood/clothing,
@@ -8764,6 +8771,16 @@
 	},
 /turf/open/floor/plating/woodrough,
 /area/vtm)
+"dfP" = (
+/obj/effect/turf_decal/siding/wideplating{
+	color = "#5a2355";
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/carpet/purple,
+/area/vtm)
 "dfS" = (
 /obj/effect/turf_decal/siding/wideplating{
 	color = "#aa4f25";
@@ -13047,6 +13064,17 @@
 /obj/structure/marker_beacon/burgundy,
 /turf/open/floor/plating/rough,
 /area/vtm/clinic)
+"eIS" = (
+/obj/effect/turf_decal/siding/wideplating{
+	color = "#5a2355";
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/closet/cabinet,
+/turf/open/floor/carpet/purple,
+/area/vtm)
 "eJf" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/effect/turf_decal/siding/white{
@@ -36035,6 +36063,12 @@
 /obj/fusebox,
 /turf/open/floor/plating/vampplating,
 /area/vtm/interior/endron_facility/restricted)
+"mKO" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/plating/woodfancy,
+/area/vtm)
 "mKR" = (
 /obj/structure/bath,
 /turf/open/floor/plating/industrial,
@@ -39887,6 +39921,18 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/vtm/interior)
+"nZH" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/siding/wideplating{
+	color = "#5a2355";
+	dir = 5
+	},
+/obj/item/bedsheet/rd{
+	desc = "A purple bedsheet, what more did you expect.";
+	name = "purple bedsheet"
+	},
+/turf/open/floor/carpet/purple,
+/area/vtm)
 "nZQ" = (
 /obj/machinery/mineral/equipment_vendor/fastfood/sodavendor/blue,
 /turf/open/floor/plating/parquetry/old,
@@ -58089,6 +58135,16 @@
 "urr" = (
 /turf/closed/wall/vampwall,
 /area/vtm/baywalk)
+"urz" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/woodfancy,
+/area/vtm)
 "urK" = (
 /obj/structure/vampdoor/glass{
 	dir = 8;
@@ -66598,6 +66654,10 @@
 /obj/structure/stairs/north,
 /turf/open/floor/plating/parquetry,
 /area/vtm/clinic)
+"xxg" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/plating/woodfancy,
+/area/vtm)
 "xxj" = (
 /obj/structure/bed,
 /turf/open/floor/plating/woodrough,
@@ -112744,10 +112804,10 @@ rCB
 rCB
 rCB
 lfj
-jGe
-jGe
-jGe
-jGe
+xff
+aAe
+urz
+mKO
 jGe
 lfj
 vOw
@@ -112946,7 +113006,7 @@ xfw
 xfw
 rCB
 lfj
-jGe
+nrQ
 jGe
 jGe
 jGe
@@ -113148,7 +113208,7 @@ xfw
 xfw
 rCB
 lfj
-jGe
+xff
 jGe
 jGe
 jGe
@@ -113350,9 +113410,9 @@ xfw
 xfw
 rCB
 lfj
-jGe
-jGe
-jGe
+eIS
+dfP
+wZt
 jGe
 jGe
 ogC
@@ -113552,11 +113612,11 @@ rCB
 rCB
 rCB
 lfj
+nZH
+axh
+vKF
 jGe
-jGe
-jGe
-jGe
-jGe
+xxg
 lfj
 nGu
 bgq
