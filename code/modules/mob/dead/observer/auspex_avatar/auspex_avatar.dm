@@ -57,7 +57,6 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	auspex_avatar.client.prefs.chat_toggles &= ~CHAT_DEAD
 	auspex_avatar.client.show_popup_menus = 0
 	auspex_avatar.overlay_fullscreen("film_grain", /atom/movable/screen/fullscreen/film_grain, rand(1, 9))
-	auspex_ghost = auspex_avatar //put this reference on the human mob so we can keep track
 
 	return auspex_avatar
 
@@ -90,7 +89,6 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	mind.current.key = key
 	mind.current.client.init_verbs()
 	original_body.soul_state = SOUL_PRESENT
-	original_body.auspex_ghost = null //no longer in the ghost, remove the reference on the original body
 
 	if(forced)
 		original_body.adjustBruteLoss(rand(25,50))
