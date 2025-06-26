@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	can_reenter_corpse = TRUE
 	var/mob_biotype = MOB_SPIRIT
 	var/haunted = FALSE //do we have a friend yet?
+	COOLDOWN_DECLARE(revenant_auspex_demon_spawncooldown)
 
 /mob/dead/observer/avatar/Initialize()
 	. = ..()
@@ -57,7 +58,6 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	auspex_avatar.client.prefs.chat_toggles &= ~CHAT_DEAD
 	auspex_avatar.client.show_popup_menus = 0
 	auspex_avatar.overlay_fullscreen("film_grain", /atom/movable/screen/fullscreen/film_grain, rand(1, 9))
-
 	return auspex_avatar
 
 /mob/dead/observer/avatar/reenter_corpse(forced)
@@ -97,9 +97,11 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	return TRUE
 
 /mob/dead/observer/avatar/proc/create_haunting()
+	if(prob(50)) //coinflip to create a haunting
+		return
 	haunted = TRUE
 	var/auspex_demon_spawn
-	for(var/obj/machinery/possible_spawn_point in oview(20, src)) //a ghost in the machine? in this economy?
+	for(var/obj/possible_spawn_point in oview(20, src))
 		auspex_demon_spawn = possible_spawn_point
 		break
 
@@ -111,10 +113,19 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	to_chat(src, span_warning("[spookyguy] emerges from [auspex_demon_spawn]!"))
 	spookyguy.haunt_target = src
 
+/mob/dead/observer/avatar/proc/roll_demon_dice()
+	if(haunted)
+		return
+	if(prob(25)) //chance to create an auspex demon
+		create_haunting()
+
 /mob/dead/observer/avatar/Move()
 	. = ..()
-	if(!haunted && prob(10))
-		create_haunting()
+
+	if(!COOLDOWN_FINISHED(src, revenant_auspex_demon_spawncooldown))
+		return
+	COOLDOWN_START(src, revenant_auspex_demon_spawncooldown, rand(5 SECONDS, 30 SECONDS))
+	roll_demon_dice()
 
 /mob/dead/observer/avatar/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	return

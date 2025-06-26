@@ -21,6 +21,10 @@
 	"You are not welcome here..."
 	)
 
+/mob/living/simple_animal/revenant/Initialize()
+	. = ..()
+	AddElement(/datum/element/point_of_interest) // let observers know something entertaining is happening
+
 /mob/living/simple_animal/revenant/auspex_demon/Life()
 	. = ..()
 	if(QDELETED(haunt_target) || !haunt_target)
@@ -38,11 +42,11 @@
 	var/spooky_phrase = pick(spooky_phrases)
 	for(var/letter in GLOB.malkavian_character_replacements)
 		spooky_phrase = replacetextEx(spooky_phrase, letter, GLOB.malkavian_character_replacements[letter])
-	if(get_dist(src, haunt_target) < 12)
+	if(prob(50)) //50% chance to say a spooky phrase every 12 to 24 seconds
 		to_chat(haunt_target, span_cult(spooky_phrase))
 	stalk_distance = max(0, stalk_distance - rand(1,3))
-	if(haunt_target.z > z)
-		zMove(UP)
-	else if(haunt_target.z < z)
-		zMove(DOWN)
-	walk_to(src, haunt_target, stalk_distance)
+	z = haunt_target.z
+	walk_towards(src, haunt_target, stalk_distance)
+	if(get_dist(src, haunt_target) > 20) //they evaded the spirits... for now
+		haunt_target.haunted = FALSE
+		qdel(src)
