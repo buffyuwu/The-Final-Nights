@@ -19,6 +19,7 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	see_invisible = SEE_INVISIBLE_AVATAR
 	can_reenter_corpse = TRUE
 	var/mob_biotype = MOB_SPIRIT
+	var/haunted = FALSE //do we have a friend yet?
 
 /mob/dead/observer/avatar/Initialize()
 	. = ..()
@@ -40,7 +41,6 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 
 	stop_sound_channel(CHANNEL_HEARTBEAT)
 	var/mob/dead/observer/avatar/auspex_avatar = new(src)
-
 	SStgui.on_transfer(src, auspex_avatar)
 	auspex_avatar.icon = src.icon
 	auspex_avatar.overlays = src.overlays
@@ -55,12 +55,13 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	auspex_avatar.client.prefs.chat_toggles &= ~CHAT_GHOSTLAWS
 	auspex_avatar.client.prefs.chat_toggles &= ~CHAT_LOGIN_LOGOUT
 	auspex_avatar.client.prefs.chat_toggles &= ~CHAT_DEAD
-
+	auspex_avatar.client.show_popup_menus = 0
 	auspex_avatar.overlay_fullscreen("film_grain", /atom/movable/screen/fullscreen/film_grain, rand(1, 9))
+	auspex_ghost = auspex_avatar //put this reference on the human mob so we can keep track
 
 	return auspex_avatar
 
-/mob/dead/observer/avatar/reenter_corpse()
+/mob/dead/observer/avatar/reenter_corpse(forced)
 	if(!client)
 		return FALSE
 	if(!mind || QDELETED(mind.current))
@@ -76,7 +77,7 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 
 	if(isnull(body_turf) || isnull(current_turf))
 		return FALSE
-	if(!(body_turf == current_turf))
+	if(!(body_turf == current_turf) && !forced)
 		to_chat(src, span_warning("Your body is not here. It is located at coordinates: [body_turf.x], [body_turf.y], [body_turf.z]."))
 		to_chat(src, span_warning("Your current coordinates are: [current_turf.x], [current_turf.y], [current_turf.z]."))
 		return FALSE
@@ -89,8 +90,33 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	mind.current.key = key
 	mind.current.client.init_verbs()
 	original_body.soul_state = SOUL_PRESENT
+	original_body.auspex_ghost = null //no longer in the ghost, remove the reference on the original body
+
+	if(forced)
+		original_body.adjustBruteLoss(rand(25,50))
+		to_chat(original_body, span_warning("You were attacked by a malevolent spirit and forced back into your body!"))
 
 	return TRUE
+
+/mob/dead/observer/avatar/proc/create_haunting()
+	haunted = TRUE
+	var/auspex_demon_spawn
+	for(var/obj/machinery/possible_spawn_point in oview(20, src)) //a ghost in the machine? in this economy?
+		auspex_demon_spawn = possible_spawn_point
+		break
+
+	if(!auspex_demon_spawn) //no machines nearby to create ghosts from. pity.
+		return
+
+	//if you are here, it is already too late
+	var/mob/living/simple_animal/revenant/auspex_demon/spookyguy = new(get_turf(auspex_demon_spawn))
+	to_chat(src, span_warning("[spookyguy] emerges from [auspex_demon_spawn]!"))
+	spookyguy.haunt_target = src
+
+/mob/dead/observer/avatar/Move()
+	. = ..()
+	if(!haunted && prob(10))
+		create_haunting()
 
 /mob/dead/observer/avatar/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	return

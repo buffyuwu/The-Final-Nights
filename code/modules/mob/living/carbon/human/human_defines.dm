@@ -12,6 +12,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	can_be_shoved_into = TRUE
+	var/auspex_ghost //holder for the avatar mob, if they are in one
 
 	//Hair colour and style
 	var/hair_color = "#000000"
