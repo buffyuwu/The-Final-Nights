@@ -97,18 +97,18 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 	return TRUE
 
 /mob/dead/observer/avatar/proc/create_haunting()
-	if(prob(50)) //coinflip to create a haunting
-		return
-	haunted = TRUE
 	var/auspex_demon_spawn
 	for(var/obj/possible_spawn_point in oview(20, src))
-		auspex_demon_spawn = possible_spawn_point
+		auspex_demon_spawn = possible_spawn_point //take the first object we see in a radius of 20 and make that our spawnpoint
+		if(get_dist(src, possible_spawn_point) < 6) //dont spawn them too close, though
+			continue
 		break
 
 	if(!auspex_demon_spawn) //no machines nearby to create ghosts from. pity.
 		return
 
 	//if you are here, it is already too late
+	haunted = TRUE
 	var/mob/living/simple_animal/revenant/auspex_demon/spookyguy = new(get_turf(auspex_demon_spawn))
 	to_chat(src, span_warning("[spookyguy] emerges from [auspex_demon_spawn]!"))
 	spookyguy.haunt_target = src
@@ -116,7 +116,7 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 /mob/dead/observer/avatar/proc/roll_demon_dice()
 	if(haunted)
 		return
-	if(prob(25)) //chance to create an auspex demon
+	if(prob(25)) //25% chance to create an auspex demon every 5 seconds while moving around as an auspex avatar
 		create_haunting()
 
 /mob/dead/observer/avatar/Move()
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(avatar_banned_verbs, list(
 
 	if(!COOLDOWN_FINISHED(src, revenant_auspex_demon_spawncooldown))
 		return
-	COOLDOWN_START(src, revenant_auspex_demon_spawncooldown, rand(5 SECONDS, 30 SECONDS))
+	COOLDOWN_START(src, revenant_auspex_demon_spawncooldown, 5 SECONDS)
 	roll_demon_dice()
 
 /mob/dead/observer/avatar/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
