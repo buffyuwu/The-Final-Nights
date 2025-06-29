@@ -47,8 +47,7 @@
 	COOLDOWN_START(src, revenant_auspex_demon_move, rand(6 SECONDS, 12 SECONDS))
 	if(prob(10)) //10% chance to say a spooky phrase every 6 to 12 seconds
 		var/spooky_phrase = pick(spooky_phrases)
-		for(var/letter in GLOB.malkavian_character_replacements)
-			spooky_phrase = replacetextEx(spooky_phrase, letter, GLOB.malkavian_character_replacements[letter])
+		spooky_phrase = spooky_font_replace(spooky_phrase)
 		to_chat(haunt_target, span_cult(spooky_phrase)) //push the spooky phrase directly to our haunting targets chat, since auspex avatars cant hear dead chat
 
 	stalk_distance = max(0, stalk_distance - rand(1,3)) //decrease this every cooldown_finished by somewhere between 1 to 3. this stalk_distance in walk_to is how close the mob will get before stopping

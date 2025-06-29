@@ -3761,6 +3761,7 @@
 #include "modular_tfn\modules\discord\tgs_commands.dm"
 #include "modular_tfn\modules\discord\toggle_notify.dm"
 #include "modular_tfn\modules\fomori\code\fomori.dm"
+#include "modular_tfn\modules\font_adjustments\font_procs.dm"
 #include "modular_tfn\modules\loadout\_loadout.dm"
 #include "modular_tfn\modules\loadout\loadout_eyewear.dm"
 #include "modular_tfn\modules\loadout\loadout_footwear.dm"
