@@ -241,3 +241,6 @@
 2025-09-25:
   SELFHELL:
   - rscadd: Daim 4 Rework
+2025-09-26:
+  XeonMations:
+  - refactor: Refactored the way the game initializes, hopefully works faster.
