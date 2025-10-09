@@ -1,5 +1,0 @@
-author: "bomby"
-delete-after: True
-changes:
-  - map: "umbra connects to the new bar"
-  - image: "busmap represents new bar properly now"

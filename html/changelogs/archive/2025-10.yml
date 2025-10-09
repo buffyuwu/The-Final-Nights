@@ -10,3 +10,7 @@
   - rscadd: extra guns to certain armouries, req vendor to FBI, add vet keys
   - bugfix: fixes the FBI fax machine
   - qol: nerf bogatyr armour to 65
+2025-10-09:
+  bomby:
+  - map: umbra connects to the new bar
+  - image: busmap represents new bar properly now
