@@ -1,0 +1,4 @@
+author: "Hawk-v3"
+delete-after: True
+changes:
+  - bugfix: "Corax Crinos mirror Crinos in that both can now remove doors."
