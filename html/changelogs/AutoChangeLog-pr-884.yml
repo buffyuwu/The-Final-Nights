@@ -1,4 +1,0 @@
-author: "chazzyjazzy"
-delete-after: True
-changes:
-  - bugfix: "deletes graveyard zombies upon death"
