@@ -35,5 +35,8 @@
 2025-10-14:
   Hawk-v3:
   - bugfix: Corax corvid form inherits trait correctly.
+  - balance: Veil healing timer now 15 minutes not 40.
+  XeonMations:
+  - bugfix: fixed kindred books appearing in the adult bookshelves
   chazzyjazzy:
   - bugfix: deletes graveyard zombies upon death
