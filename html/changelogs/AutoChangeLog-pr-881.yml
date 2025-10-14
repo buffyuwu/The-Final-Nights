@@ -1,0 +1,4 @@
+author: "Hawk-v3"
+delete-after: True
+changes:
+  - balance: "Veil healing timer now 15 minutes not 40."
