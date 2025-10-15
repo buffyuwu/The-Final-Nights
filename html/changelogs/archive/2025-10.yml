@@ -40,3 +40,8 @@
   - bugfix: fixed kindred books appearing in the adult bookshelves
   chazzyjazzy:
   - bugfix: deletes graveyard zombies upon death
+2025-10-15:
+  chazzyjazzy:
+  - rscadd: Reworked Dominate and Presence to be TTRPG accurate
+  - rscdel: Removed Voice of Domination from Dominate since it is not lore accurate
+      at all
