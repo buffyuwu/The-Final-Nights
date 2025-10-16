@@ -46,6 +46,9 @@
   - rscdel: Removed Voice of Domination from Dominate since it is not lore accurate
       at all
 2025-10-16:
+  Hawk-v3:
+  - balance: Non-BSD Fera can use any totem that isn't a BSD one.
+  - balance: BSD Garou can only use their own totem.
   chazzyjazzy, blitzarde:
   - rscadd: Adds Thaumaturgy paths 'Lure of Flames' and 'Path of Levinbolt', unlocked
       via collecting and accruing research into Blood Magic by collecting spellbooks,
@@ -61,3 +64,5 @@
       its location when identified
   - bugfix: the 'odious chalice' artifact no longer has infinite blood
   - map: new occult item / spellbook shop added in the Chantry
+  darkincarnate:
+  - qol: change camarilla badge names

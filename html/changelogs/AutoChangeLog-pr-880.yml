@@ -1,5 +1,0 @@
-author: "Hawk-v3"
-delete-after: True
-changes:
-  - balance: "Non-BSD Fera can use any totem that isn't a BSD one."
-  - balance: "BSD Garou can only use their own totem."
