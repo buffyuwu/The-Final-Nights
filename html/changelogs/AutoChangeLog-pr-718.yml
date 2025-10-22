@@ -1,0 +1,8 @@
+author: "TheTrueSilverRat"
+delete-after: True
+changes:
+  - rscadd: "New gangrel protean 3 and 5"
+  - rscdel: "Some of the other gangrel warforms"
+  - qol: "Added a button to transform back in the shapeshift proc"
+  - sound: "added or removed sounds"
+  - code_imp: "Made Mist form fly"
