@@ -91,3 +91,8 @@
   - rscadd: remove non-BSD from security, add human/kindred to other roles, larp titles,
       new npcs, endron car
   - qol: fax machine moved
+2025-10-24:
+  Kolibri-B:
+  - rscadd: 'Added new Thaumaturgy ritual: Chime of Unseen Spirits'
+  - sound: Added spirit_chime_ring.ogg
+  - image: Added spirit_chime.dmi, with icons "bell" and "chime"
