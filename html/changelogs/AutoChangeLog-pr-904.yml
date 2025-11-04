@@ -1,4 +1,0 @@
-author: "Zeus-succs"
-delete-after: True
-changes:
-  - bugfix: "Should fix Melp 2 not sending proper messages."
