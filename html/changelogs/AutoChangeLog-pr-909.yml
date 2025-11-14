@@ -1,0 +1,4 @@
+author: "XeonMations"
+delete-after: True
+changes:
+  - server: "Server now checks for age verified members, and kicks anyone out who isn't verified."
