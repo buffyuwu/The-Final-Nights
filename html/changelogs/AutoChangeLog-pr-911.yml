@@ -1,5 +1,0 @@
-author: "Magisterium2022"
-delete-after: True
-changes:
-  - bugfix: "Fixed duration bug with Blood of Potency (Thaumaturgy 3)"
-  - code_imp: "Cleaned up Blood of Potency Code."

@@ -23,6 +23,9 @@
   - server: Server now checks for age verified members, and kicks anyone out who isn't
       verified.
 2025-11-17:
+  Magisterium2022:
+  - bugfix: Fixed duration bug with Blood of Potency (Thaumaturgy 3)
+  - code_imp: Cleaned up Blood of Potency Code.
   Mnemeory:
   - bugfix: fixes mort attendant not spawning w/ID
   - bugfix: fixes mort attendant not spawning w/P25
