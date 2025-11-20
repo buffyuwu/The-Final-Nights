@@ -33,3 +33,9 @@
   - bugfix: adds mort attendant to the pyxis
   XeonMations:
   - bugfix: Fixed the logging machine not clearing logs.
+2025-11-20:
+  AlmostLikeClockwork:
+  - rscdel: Removed unbonding quirk
+  Drakeven:
+  - bugfix: Wyrm tainted hispo and dog forms now have sprites
+  - image: Added sprites for those two things.

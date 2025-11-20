@@ -1,5 +1,0 @@
-author: "Drakeven"
-delete-after: True
-changes:
-  - bugfix: "Wyrm tainted hispo and dog forms now have sprites"
-  - image: "Added sprites for those two things."
