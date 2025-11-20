@@ -1,0 +1,5 @@
+author: "Magisterium2022"
+delete-after: True
+changes:
+  - rscadd: "Added feedback when Dominate fails due to gen difference."
+  - bugfix: "Fixed error allowing higher gens to dominate lower gens vampires."
