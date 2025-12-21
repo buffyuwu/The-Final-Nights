@@ -11,6 +11,7 @@
 	female_clothes = /obj/item/clothing/under/vampire/malkavian/female
 	clan_keys = /obj/item/vamp/keys/malkav
 	var/derangement = TRUE
+	var/use_malk_font = FALSE
 
 	var/list/mob/living/madness_network
 
@@ -44,6 +45,10 @@
 
 /datum/vampire_clan/malkavian/proc/handle_say(mob/living/source, list/speech_args)
 	SIGNAL_HANDLER
+
+	if(use_malk_font)
+		var/list/spans = list("malkavian")
+		speech_args[SPEECH_SPANS] |= spans
 
 	if (!prob(20))
 		return
@@ -91,7 +96,7 @@
 
 /datum/action/cooldown/malk_speech
 	name = "Madness Speech"
-	desc = "Unleash your innermost thoughts"
+	desc = "Switch between Malkavian font and regular"
 	button_icon_state = "malk_speech"
 	check_flags = AB_CHECK_CONSCIOUS
 	vampiric = TRUE
@@ -99,19 +104,11 @@
 
 /datum/action/cooldown/malk_speech/Trigger(trigger_flags)
 	. = ..()
-	var/mad_speak = FALSE
-	if(IsAvailable())
-		mad_speak = tgui_input_text(owner, "What revelations do we wish to convey?", encode = FALSE)
-	if(CHAT_FILTER_CHECK(mad_speak))
-		//before we inadvertently obfuscate the message to pass filters, filter it first.
-		//as funny as malkavians saying "amogus" would be, the filter also includes slurs... how unfortunate.
-		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[mad_speak]\"</span>"))
-		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
-		return
 
-	if(mad_speak)
-		StartCooldown()
-		// replace some letters to make the font more closely resemble that of vtm: bloodlines' malkavian dialogue
-		// big thanks to Metek for helping me condense this from a bunch of ugly regex replace procs
-		mad_speak = spooky_font_replace(mad_speak)
-		owner.say(mad_speak, spans = list(SPAN_SANS)) // say() handles sanitation on its own
+	if(IsAvailable())
+		var/datum/vampire_clan/malkavian/clan_malkavian = GLOB.vampire_clans[/datum/vampire_clan/malkavian]
+		clan_malkavian.use_malk_font = !clan_malkavian.use_malk_font
+
+	StartCooldown()
+
+
