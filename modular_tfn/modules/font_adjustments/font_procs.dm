@@ -1,5 +1,5 @@
-//this file holds text and character replacement stuff, like the malk madness speech
-/proc/spooky_font_replace(input) //mostly used for malkavians
+
+/proc/spooky_font_replace(input) //mostly used for auspex ghosts
 	if(!input)
 		return
 
