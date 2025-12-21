@@ -296,3 +296,6 @@
 
 // Allows the user to pass through doors
 #define TRAIT_PASSDOOR "trait_passdoor" //TFN EDIT ADDITION -- Obtenebration & Mysticism Rework
+
+// Whether or not the user is speaking with the special Malkavian font
+#define TRAIT_MALK_FONT "trait_malk_font" //TFN EDIT ADDITION -- madness speech

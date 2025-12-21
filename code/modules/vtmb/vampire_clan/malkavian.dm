@@ -11,7 +11,6 @@
 	female_clothes = /obj/item/clothing/under/vampire/malkavian/female
 	clan_keys = /obj/item/vamp/keys/malkav
 	var/derangement = TRUE
-	var/use_malk_font = FALSE
 
 	var/list/mob/living/madness_network
 
@@ -26,7 +25,7 @@
 
 	// Madness Network handling
 	LAZYADD(madness_network, vampire)
-	RegisterSignal(vampire, COMSIG_MOB_SAY, PROC_REF(handle_say), override = TRUE)
+	RegisterSignal(vampire, COMSIG_MOB_SAY, PROC_REF(handle_say))
 	RegisterSignal(vampire, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hear), override = TRUE)
 
 /datum/vampire_clan/malkavian/on_lose(mob/living/carbon/human/vampire)
@@ -46,11 +45,10 @@
 /datum/vampire_clan/malkavian/proc/handle_say(mob/living/source, list/speech_args)
 	SIGNAL_HANDLER
 
-	if(use_malk_font)
-		var/list/spans = list("malkavian")
-		speech_args[SPEECH_SPANS] |= spans
+	if(HAS_TRAIT(source, TRAIT_MALK_FONT))
+		speech_args[SPEECH_SPANS] |= "malkavian"
 
-	if (!prob(20))
+	if(!prob(20))
 		return
 
 	say_in_madness_network(speech_args[SPEECH_MESSAGE])
@@ -104,11 +102,12 @@
 
 /datum/action/cooldown/malk_speech/Trigger(trigger_flags)
 	. = ..()
+	if(!IsAvailable())
+		return
 
-	if(IsAvailable())
-		var/datum/vampire_clan/malkavian/clan_malkavian = GLOB.vampire_clans[/datum/vampire_clan/malkavian]
-		clan_malkavian.use_malk_font = !clan_malkavian.use_malk_font
+	if (HAS_TRAIT(owner, TRAIT_MALK_FONT))
+		REMOVE_TRAIT(owner, TRAIT_MALK_FONT, src)
+	else
+		ADD_TRAIT(owner, TRAIT_MALK_FONT, src)
 
 	StartCooldown()
-
-
