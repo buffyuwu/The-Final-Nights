@@ -107,7 +107,9 @@
 
 	if (HAS_TRAIT(owner, TRAIT_MALK_FONT))
 		REMOVE_TRAIT(owner, TRAIT_MALK_FONT, src)
+		to_chat(owner, span_notice("You start speaking normally again."))
 	else
 		ADD_TRAIT(owner, TRAIT_MALK_FONT, src)
+		to_chat(owner, span_notice("You begin to channel your derangement into your speech."))
 
 	StartCooldown()
