@@ -90,17 +90,6 @@ module.exports = (env = {}, argv) => {
             },
           ],
         },
-        {
-          test: /\.(woff2?|ttf|eot|otf)$/,
-          use: [
-            {
-              loader: require.resolve('url-loader'),
-              options: {
-                esModule: false,
-              },
-            },
-          ],
-        },
       ],
     },
     optimization: {
