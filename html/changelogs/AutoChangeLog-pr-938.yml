@@ -1,4 +1,0 @@
-author: "buffyuwu"
-delete-after: True
-changes:
-  - refactor: "overhauled newspaper system for lore team. use a newspaper item ingame to check it out!"
