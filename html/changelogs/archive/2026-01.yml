@@ -2,3 +2,5 @@
   buffyuwu:
   - refactor: overhauled newspaper system for lore team. use a newspaper item ingame
       to check it out!
+  faaaay:
+  - bugfix: the Endron Executive role is selectable again
