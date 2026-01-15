@@ -13,3 +13,5 @@
 2026-01-15:
   Dusk-a:
   - balance: Nerfs Tzimisce wing speed
+  Stutternov:
+  - rscadd: Adds new game preference toggle to turn on/off combat mode open inventory/stripping.
