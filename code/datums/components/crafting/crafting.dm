@@ -192,7 +192,7 @@
 			// TFN EDIT ADD END - Craftable Doors and Windows
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I = new R.result (get_turf(a.loc))
-			R.on_craft_items(I, ingredient_items) //run additional spawn logic as needed
+			R.on_craft_items(I, ingredient_items) //run additional spawn logic as needed // TFN EDIT ADD
 			if(istype(I, /mob/living/simple_animal/hostile))
 				var/mob/living/simple_animal/hostile/HS = I
 				if(ishuman(a))
