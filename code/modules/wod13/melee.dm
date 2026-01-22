@@ -812,6 +812,9 @@
 	max_integrity = 999999
 	material_flags = MATERIAL_NO_EFFECTS
 	is_wood = TRUE
+	var/original_access //store the original access for when the door is rebuilt, the original keys work
+	var/original_icon //store the original icon, too
+	var/original_dir //and this
 
 /obj/item/melee/classic_baton/vampire
 	name = "police baton"

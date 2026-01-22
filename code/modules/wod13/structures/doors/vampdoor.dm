@@ -15,7 +15,7 @@
 
 	var/closed = TRUE
 	var/locked = FALSE
-	var/lock_id = null
+	var/lock_id //this doesnt need to be set to null manually, its null by default
 	var/glass = FALSE
 	var/lockpick_timer = 17 //[Lucifernix] - Never have the lockpick timer lower than 7. At 7 it will unlock instantly!!
 	var/lockpick_difficulty = 2
@@ -264,6 +264,10 @@
 /obj/structure/vampdoor/proc/break_door(mob/user)
 	playsound(get_turf(src), 'code/modules/wod13/sounds/get_bent.ogg', 100, FALSE)
 	var/obj/item/shield/door/D = new(get_turf(src))
+	if(lock_id) //copy this over if it exists
+		D.original_access = lock_id
+	D.original_icon = icon_state
+	D.original_dir = dir
 	D.icon_state = baseicon
 	var/atom/throw_target = get_edge_target_turf(src, user.dir)
 	D.throw_at(throw_target, rand(2, 4), 4, user)
