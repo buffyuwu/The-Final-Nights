@@ -826,7 +826,7 @@
 
 	if(original_door)
 		to_chat(user, span_notice("You start repairing the door..."))
-		if(!do_after(user, 5 SECONDS))
+		if(!do_after(user, 20 SECONDS))
 			return
 		original_door.forceMove(get_turf(original_location)) //put it back where you found it, brujah
 		to_chat(user, span_notice("You successfully repaired the door."))
