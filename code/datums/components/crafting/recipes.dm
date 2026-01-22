@@ -27,6 +27,7 @@
 /datum/crafting_recipe/proc/check_requirements(mob/user, list/collected_requirements)
 	return TRUE
 
+// TFN EDIT ADD
 /**
  * Additional spawn logic for when the object is crafted
  *
@@ -61,7 +62,7 @@
 		result.lock_id = D.original_access
 		result.dir = D.original_dir
 		break
-
+// TFN EDIT ADD END
 /*
 /datum/crafting_recipe/improv_explosive
 	name = "IED"
