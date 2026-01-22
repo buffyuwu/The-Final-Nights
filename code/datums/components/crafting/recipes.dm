@@ -27,6 +27,7 @@
 /datum/crafting_recipe/proc/check_requirements(mob/user, list/collected_requirements)
 	return TRUE
 
+// TFN EDIT ADD
 /**
  * Additional spawn logic for when the object is crafted
  *
@@ -46,6 +47,7 @@
 	category = CAT_CONSTRUCTION
 	subcategory = CAT_WINDOWS
 
+// TFN EDIT ADD END
 /*
 /datum/crafting_recipe/improv_explosive
 	name = "IED"
