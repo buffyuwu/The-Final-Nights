@@ -185,9 +185,11 @@
 				return ", missing component."
 			if(!check_tools(a, R, contents))
 				return ", missing tool."
+			// TFN EDIT ADD - Craftable Doors and Windows
 			var/list/ingredient_items = list() //keep track of the ingredients we are using so we can take data from them as needed. i.e. lock_id from doors when repairing them for keys to work
 			for(var/obj/item/ingredient in get_environment(a, R.blacklist))
 				ingredient_items += ingredient
+			// TFN EDIT ADD END - Craftable Doors and Windows
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			R.on_craft_items(I, ingredient_items) //run additional spawn logic as needed
