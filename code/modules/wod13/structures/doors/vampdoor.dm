@@ -264,14 +264,12 @@
 /obj/structure/vampdoor/proc/break_door(mob/user)
 	playsound(get_turf(src), 'code/modules/wod13/sounds/get_bent.ogg', 100, FALSE)
 	var/obj/item/shield/door/D = new(get_turf(src))
-	if(lock_id) //copy this over if it exists
-		D.original_access = lock_id
-	D.original_icon = icon_state
-	D.original_dir = dir
+	D.original_door = src
+	D.original_location = get_turf(src)
 	D.icon_state = baseicon
 	var/atom/throw_target = get_edge_target_turf(src, user.dir)
 	D.throw_at(throw_target, rand(2, 4), 4, user)
-	qdel(src)
+	src.moveToNullspace()
 
 // TFN EDIT START: Check for trait to allow phasing through doors
 /obj/structure/vampdoor/CanPass(atom/movable/mover, turf/target)

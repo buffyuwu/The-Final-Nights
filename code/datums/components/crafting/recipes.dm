@@ -35,7 +35,7 @@
  * good: for(var/obj/item/shield/door/D in ingredient_items)
  * bad: for(var/obj/item/D in ingredient_items)
  */
-/datum/crafting_recipe/proc/on_craft_items(obj/result, list/ingredient_items)
+/datum/crafting_recipe/proc/on_craft_items(atom/movable/result, list/ingredient_items)
 	return
 
 /datum/crafting_recipe/fulltilewindow
@@ -45,22 +45,6 @@
 	time = 15
 	category = CAT_CONSTRUCTION
 	subcategory = CAT_WINDOWS
-
-/datum/crafting_recipe/door
-	name = "Repair Held Door"
-	result = /obj/structure/vampdoor
-	reqs = list(/obj/item/shield/door = 1)
-	parts = list(/obj/item/shield/door = 1)
-	time = 15
-	category = CAT_CONSTRUCTION
-	subcategory = CAT_DOORS
-
-/datum/crafting_recipe/door/on_craft_items(obj/structure/vampdoor/result, list/ingredient_items)
-	for(var/obj/item/shield/door/D in ingredient_items)
-		result.icon_state = D.original_icon
-		result.lock_id = D.original_access
-		result.dir = D.original_dir
-		break
 
 /*
 /datum/crafting_recipe/improv_explosive
