@@ -812,25 +812,6 @@
 	max_integrity = 999999
 	material_flags = MATERIAL_NO_EFFECTS
 	is_wood = TRUE
-	var/atom/movable/original_door
-	var/turf/original_location
-
-/obj/item/shield/door/attack_self(mob/user)
-	if(!original_location)
-		to_chat(user, span_warning("This door is too broken to repair."))
-		return
-
-	if(get_dist(original_location, src) > 3)
-		to_chat(user, span_warning("You must stand closer to where the door was broken to repair it."))
-		return
-
-	if(original_door)
-		to_chat(user, span_notice("You start repairing the door..."))
-		if(!do_after(user, 20 SECONDS))
-			return
-		original_door.forceMove(get_turf(original_location)) //put it back where you found it, brujah
-		to_chat(user, span_notice("You successfully repaired the door."))
-		qdel(src)
 
 /obj/item/melee/classic_baton/vampire
 	name = "police baton"

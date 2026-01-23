@@ -47,6 +47,14 @@
 	category = CAT_CONSTRUCTION
 	subcategory = CAT_WINDOWS
 
+/datum/crafting_recipe/door
+	name = "Build Wooden Door"
+	result = /obj/structure/vampdoor/wood
+	reqs = list(/obj/item/stack/sheet/mineral/wood = 10)
+	time = 30
+	category = CAT_CONSTRUCTION
+	subcategory = CAT_DOORS
+
 // TFN EDIT ADD END
 /*
 /datum/crafting_recipe/improv_explosive
