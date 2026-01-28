@@ -1,6 +1,0 @@
-author: "Stutternov"
-delete-after: True
-changes:
-  - rscadd: "Adds new cropped leather jackets, one for each color"
-  - rscadd: "Adds new red leather jacket with a cropped variant"
-  - rscadd: "Adds all new cropped leather jackets to the loadout screen."
