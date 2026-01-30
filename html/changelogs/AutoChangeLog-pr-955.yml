@@ -1,0 +1,4 @@
+author: "Dusk-a"
+delete-after: True
+changes:
+  - bugfix: "Fixed Crinos, Lupus, and Hispo from missing half their attacks."
