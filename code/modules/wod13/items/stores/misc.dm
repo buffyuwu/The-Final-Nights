@@ -121,6 +121,7 @@
 		new /datum/data/mining_equipment("chainsaw", /obj/item/melee/vampirearms/chainsaw, 2000),
 		new /datum/data/mining_equipment("hunting rifle", /obj/item/gun/ballistic/automatic/vampire/huntrifle, 2000),
 		new /datum/data/mining_equipment("5.56 ammo",	/obj/item/ammo_box/vampire/c556,	2000),
+		new /datum/data/mining_equipment("wooden plank", /obj/item/stack/sheet/mineral/wood, 5),
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/music
@@ -160,5 +161,6 @@
 		new /datum/data/mining_equipment("prepaid cell phone", /obj/item/vamp/phone, 100),
 		new /datum/data/mining_equipment("box of light bulbs", /obj/item/wirecutters, 100),
 		new /datum/data/mining_equipment("insulated gloves", /obj/item/clothing/gloves/color/yellow, 200),
+		new /datum/data/mining_equipment("wooden plank", /obj/item/stack/sheet/mineral/wood, 5),
 		new /datum/data/mining_equipment("newspaper", /obj/item/newspaper, 5)
 	)
