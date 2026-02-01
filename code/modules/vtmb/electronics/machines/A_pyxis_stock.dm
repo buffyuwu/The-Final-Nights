@@ -145,14 +145,3 @@ GLOBAL_LIST_INIT(CLINIC_category_access, list(
 	if(!GLOB.CLINIC_job_access[job] || !GLOB.CLINIC_category_access[category])
 		return
 	return GLOB.CLINIC_job_access[job] >= GLOB.CLINIC_category_access[category]
-
-#undef CLINIC_ACCESS_BASIC
-#undef CLINIC_ACCESS_MEDICAL
-#undef CLINIC_ACCESS_FULL
-#undef CLINIC_ACCESS_ADMIN
-#undef CLINIC_CATEGORY_CONTROLLED
-#undef CLINIC_CATEGORY_MEDICAL
-#undef CLINIC_CATEGORY_MEDICATIONS
-#undef CLINIC_CATEGORY_STAFF
-#undef CLINIC_CATEGORY_CLEANING
-#undef CLINIC_CATEGORY_OFFICE
