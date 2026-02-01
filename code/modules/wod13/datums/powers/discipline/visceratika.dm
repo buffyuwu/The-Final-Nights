@@ -130,11 +130,6 @@
 	duration_length = 15 SECONDS
 	cooldown_length = 10 SECONDS
 
-/datum/discipline_power/visceratika/flow_within_the_mountain/can_activate(atom/target, alert = FALSE)
-	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
-		to_chat(owner, span_warning("You cannot activate Flow Within the Mountain while immobilized!"))
-		return FALSE
-
 /datum/discipline_power/visceratika/flow_within_the_mountain/activate()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_PASS_THROUGH_WALLS, "Visceratika Flow Within the Mountain")
