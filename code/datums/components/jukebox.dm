@@ -346,7 +346,6 @@
 		//active_song_sound.z = new_z
 		active_song_sound.x = 0
 		active_song_sound.z = 0
-		new /obj/item/vamp/crafting(sound_turf)
 
 	SEND_SOUND(listener, active_song_sound)
 
