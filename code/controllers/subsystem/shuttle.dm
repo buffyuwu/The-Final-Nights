@@ -933,5 +933,3 @@ SUBSYSTEM_DEF(shuttle)
 					var/set_purchase = alert(usr, "Do you want to also disable shuttle purchases/random events that would change the shuttle?", "Butthurt Admin Prevention", "Yes, disable purchases/events", "No, I want to possibly get owned")
 					if(set_purchase == "Yes, disable purchases/events")
 						SSshuttle.shuttle_purchased = SHUTTLEPURCHASE_FORCED
-
-#undef MAX_TRANSIT_REQUEST_RETRIES
