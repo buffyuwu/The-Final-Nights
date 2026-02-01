@@ -121,7 +121,9 @@
 		new /datum/data/mining_equipment("chainsaw", /obj/item/melee/vampirearms/chainsaw, 2000),
 		new /datum/data/mining_equipment("hunting rifle", /obj/item/gun/ballistic/automatic/vampire/huntrifle, 2000),
 		new /datum/data/mining_equipment("5.56 ammo",	/obj/item/ammo_box/vampire/c556,	2000),
-		new /datum/data/mining_equipment("wooden plank", /obj/item/stack/sheet/mineral/wood, 5),
+		new /datum/data/mining_equipment("door crafting kit", /obj/item/vamp/crafting/doorkit, 500),
+		new /datum/data/mining_equipment("road barrier kit", /obj/item/vamp/crafting/roadbarrierkit, 500),
+		new /datum/data/mining_equipment("window kit", /obj/item/vamp/crafting/windowkit, 500),
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/music
@@ -162,6 +164,9 @@
 		new /datum/data/mining_equipment("box of light bulbs", /obj/item/storage/box/lights/bulbs, 25),
 		new /datum/data/mining_equipment("box of light tubes", /obj/item/storage/box/lights/tubes, 25),
 		new /datum/data/mining_equipment("insulated gloves", /obj/item/clothing/gloves/color/yellow, 200),
-		new /datum/data/mining_equipment("wooden plank", /obj/item/stack/sheet/mineral/wood, 5),
-		new /datum/data/mining_equipment("newspaper", /obj/item/newspaper, 5)
+		new /datum/data/mining_equipment("door crafting kit", /obj/item/vamp/crafting/doorkit, 500),
+		new /datum/data/mining_equipment("road barrier kit", /obj/item/vamp/crafting/roadbarrierkit, 500),
+		new /datum/data/mining_equipment("window kit", /obj/item/vamp/crafting/windowkit, 500),
+		new /datum/data/mining_equipment("newspaper", /obj/item/newspaper, 5),
+		new /datum/data/mining_equipment("set of 50 planks", /obj/item/stack/sheet/mineral/wood/fifty, 500),
 	)

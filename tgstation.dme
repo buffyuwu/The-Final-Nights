@@ -2361,6 +2361,7 @@
 #include "code\modules\language\hebrew.dm"
 #include "code\modules\language\italian.dm"
 #include "code\modules\language\japanese.dm"
+#include "code\modules\wod13\items\misc_items.dm"
 #include "modular_darkpack\storyteller_stats\code\living_procs\movespeed.dm"
 #include "modular_darkpack\storyteller_stats\code\st_stats\_freebie.dm"
 #include "modular_darkpack\storyteller_stats\code\st_stats\_path.dm"
