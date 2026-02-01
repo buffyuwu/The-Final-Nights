@@ -81,7 +81,7 @@
 
 /datum/computer_file/program/arcade/ui_data(mob/user)
 	//TFN EDIT START
-	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/simple/arcade)
+	var/datum/asset/simple/assets = get_asset_datum(/datum/asset/simple/arcade)
 	assets.send(user)
 	//TFN EDIT END
 	var/list/data = get_header_data()
