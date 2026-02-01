@@ -48,6 +48,11 @@
 	var/active = FALSE
 	var/original_color
 
+/datum/action/gargoyle_statue_form/can_activate(atom/target, alert = FALSE)
+	if(HAS_TRAIT(owner, TRAIT_PASS_THROUGH_WALLS))
+		to_chat(owner, span_warning("You cannot activate Statue Form while Flow Within the Mountain is active!"))
+		return FALSE
+
 /datum/action/gargoyle_statue_form/Trigger(trigger_flags)
 	if(!owner || !isliving(owner))
 		return
