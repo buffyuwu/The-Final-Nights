@@ -1166,3 +1166,7 @@ VENTORY!
 /obj/item/battering_ram
 	grid_width = 8 GRID_BOXES
 	grid_height = 3 GRID_BOXES
+
+#undef STORAGE_NO_WORN_ACCESS
+#undef STORAGE_NO_EQUIPPED_ACCESS
+#undef CHECK_BITFIELD

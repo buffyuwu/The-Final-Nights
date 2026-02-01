@@ -45,6 +45,10 @@
 	)
 
 /datum/computer_file/program/radar/ui_data(mob/user)
+ 	//TFN EDIT START
+	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/simple/radar_assets)
+	assets.send(user)
+	//TFN EDIT END
 	var/list/data = get_header_data()
 	data["selected"] = selected
 	data["objects"] = list()
