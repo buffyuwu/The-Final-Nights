@@ -159,7 +159,8 @@
 		new /datum/data/mining_equipment("tape recorder", /obj/item/taperecorder, 50),
 		new /datum/data/mining_equipment("baseball bat", /obj/item/melee/vampirearms/baseball, 50),
 		new /datum/data/mining_equipment("prepaid cell phone", /obj/item/vamp/phone, 100),
-		new /datum/data/mining_equipment("box of light bulbs", /obj/item/wirecutters, 100),
+		new /datum/data/mining_equipment("box of light bulbs", /obj/item/storage/box/lights/bulbs, 25),
+		new /datum/data/mining_equipment("box of light tubes", /obj/item/storage/box/lights/tubes, 25),
 		new /datum/data/mining_equipment("insulated gloves", /obj/item/clothing/gloves/color/yellow, 200),
 		new /datum/data/mining_equipment("wooden plank", /obj/item/stack/sheet/mineral/wood, 5),
 		new /datum/data/mining_equipment("newspaper", /obj/item/newspaper, 5)
